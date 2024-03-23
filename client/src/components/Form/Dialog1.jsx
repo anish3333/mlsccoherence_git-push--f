@@ -27,8 +27,9 @@ export default function Dialog1() {
                         unmount: { scale: 0.9, y: -100 },
                     }}
                 >
-
-                    <Signup />
+                    <div className="h-full w-full flex items-center justify-center">
+                        <Signup />
+                    </div>
                 </Dialog>
             </div>
 

@@ -12,14 +12,16 @@ export default function Signup() {
     return (
         <div className="m-2 p-4 mt-12" >
 
-            <Card className="w-fit p-5">
+            <Card
+                shadow={false}
+                className="w-fit p-5">
                 <CardHeader
                     variant="gradient"
                     color="gray"
                     className="mb-4 grid h-28 place-items-center"
                 >
                     <Typography variant="h3" color="white">
-                        Sign In
+                        Sign Up
                     </Typography>
                 </CardHeader>
 
