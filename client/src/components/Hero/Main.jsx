@@ -5,24 +5,14 @@ import Footer from '../Footer/Footer'
 
 function Main() {
     return (
-        <div>
+        <div className='flex'>
+            <Sidebar />
+            <div className='overflow-y-auto w-full'>
 
-            <div className='flex' >
-                <div className=' '>
-                    <Sidebar />
+                <div className='flex flex-wrap'>
+                    <DisplayCard />
                 </div>
-                <div >
-
-                    <div className='flex flex-wrap'>
-                        <DisplayCard />
-                        <DisplayCard />
-                        <DisplayCard />
-                        <DisplayCard />
-
-                    </div>
-                    <Footer />
-
-                </div>
+                <Footer />
 
             </div>
 
