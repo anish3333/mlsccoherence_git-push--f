@@ -9,10 +9,7 @@ import Signup from "./components/Form/Signup"
 import Signin from "./components/Form/Signin"
 import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
-import Main from "./pages/Main"
-import Faq from "./components/FAQ/Faq"
-import Splash from "./pages/Splash"
-
+import Main from "./components/Hero/Main"
 
 
 function App() {
@@ -40,8 +37,6 @@ function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/splash" element={<Splash />} />
-
 
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
@@ -49,7 +44,7 @@ function App() {
         <Route path="/checklists" element={<Sidebar />} />
         <Route path="/settings" element={<Sidebar />} />
         <Route path="/sales" element={<Sidebar />} />
-        <Route path="/blogs" element={<Sidebar />} />
+        <Route path="/blogs" element={<YoutubeAnalyticsDashboard />} />
         <Route path="/notifications" element={<Sidebar />} />
         <Route path="/themes" element={<Sidebar />} />
         <Route path="/dialog" element={<Dialog1 linkText={"Sign In"} />} />

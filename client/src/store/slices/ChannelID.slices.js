@@ -5,21 +5,21 @@ const initialState = {
     data: null
 }
 
-const dataSlice = createSlice({
-    name: "data",
+const channelIDslice = createSlice({
+    name: "channelID",
     initialState,
     reducers: {
-        setData: (state, action) => {
+        setChannelID: (state, action) => {
             state.status = true;
             state.data = action.payload;
         },
-        removeData: (state) => {
+        removeChannelID: (state) => {
             state.status = false;
             state.data = null;
         }
     }
 })
 
-export const { setData, removeData } = dataSlice.actions;
+export const { setChannelID, removeChannelID } = channelIDslice.actions;
 
-export default dataSlice.reducer;
+export default channelIDslice.reducer;
