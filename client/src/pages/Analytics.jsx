@@ -215,53 +215,55 @@ ChartJS.defaults.color = '#000';
 const data = [
     {
         label: "January",
-        totalViews: 100,
+        totalViews: 400,
         subscribers: 10,
         retentionRate: 20,
         age: 30,
-        videoTitle: "Video 1",
+        videoTitle: "Video 1 Updated",
     },
     {
         label: "February",
-        totalViews: 200,
+        totalViews: 380,
         subscribers: 20,
         retentionRate: 30,
         age: 40,
-        videoTitle: "Video 2",
+        videoTitle: "Video 2 Updated",
     },
     {
         label: "March",
-        totalViews: 300,
+        totalViews: 350,
         subscribers: 10,
         retentionRate: 80,
         age: 20,
-        videoTitle: "Video 3",
+        videoTitle: "Video 3 Updated",
     },
     {
         label: "April",
-        totalViews: 400,
+        totalViews: 600, // Adjusted peak
         subscribers: 60,
         retentionRate: 60,
         age: 15,
-        videoTitle: "Video 4",
+        videoTitle: "Video 4 Updated",
     },
     {
         label: "May",
-        totalViews: 600,
+        totalViews: 200, // Adjusted peak
         subscribers: 40,
         retentionRate: 20,
         age: 20,
-        videoTitle: "Video 5",
+        videoTitle: "Video 5 Updated",
     },
     {
         label: "June",
-        totalViews: 360,
+        totalViews: 300, // Adjusted peak
         subscribers: 32,
         retentionRate: 30,
         age: 30,
-        videoTitle: "Video 6",
+        videoTitle: "Video 6 Updated",
     },
-]
+];
+
+// console.log(data);
 
 const Analytics = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -336,8 +338,8 @@ const Analytics = () => {
                                         {
                                             label: "Total Views",
                                             data: data.map((item) => item.totalViews),
-                                            backgroundColor: "rgba(25, 255, 25, 1)",
-                                            borderColor: "rgba(0, 182, 0, 1)",
+                                            backgroundColor: "rgba(108, 108, 255, 1)",
+                                            borderColor: "rgba(0, 0, 190, 1)",
                                             borderWidth: 1,
                                             borderRadius: 10,
                                             color: "black",
@@ -379,8 +381,8 @@ const Analytics = () => {
                                         label: "Likes",
                                         data: data.map((item) => item.subscribers),
                                         fill: false,
-                                        backgroundColor: "rgba(255, 0, 0, 1)",
-                                        borderColor: "rgba(255, 0, 0, 1)",
+                                        backgroundColor: "rgba(0, 173, 3, 1)",
+                                        borderColor: "rgba(0, 173, 3, 1)",
                                     },
                                 ],
                             }}

@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.2",
     "antd": "^5.15.3",
     "apexcharts": "^3.48.0",
+    "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "lucide-react": "^0.363.0",
     "react": "^18.2.0",
