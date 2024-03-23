@@ -99,8 +99,8 @@ const Analytics = () => {
     return (
         <div className="flex">
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <div className='overflow-y-hidden w-full overflow-hidden'>
-                <div className="bg-gray-300 flex justify-around">
+            <div className='overflow-y-hidden h-full w-full overflow-hidden'>
+                <div className="bg-gray-300 flex h-16 items-center justify-around">
 
                     <div>
                         {/* Checkbox input */}
@@ -112,7 +112,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="PieChart" className=" bg-gray-700 p-3 rounded-xl" >PieChart</label>
+                        <label htmlFor="PieChart" className={`  p-3 rounded-xl ${pieChecked ? 'bg-gray-700' : 'bg-gray-400'}`} >PieChart</label>
                     </div>
 
                     <div>
@@ -125,7 +125,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="BarGraph" className=" bg-gray-700 p-3 rounded-xl">BarGraph</label>
+                        <label htmlFor="BarGraph" className={`  p-3 rounded-xl ${barChecked ? 'bg-gray-700' : 'bg-gray-400'}`}>BarGraph</label>
                     </div>
 
                     <div>
@@ -138,7 +138,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label className=" bg-gray-700 p-3 rounded-xl" htmlFor="LineChart">LineChart</label>
+                        <label className={`  p-3 rounded-xl ${lineChecked ? 'bg-gray-700' : 'bg-gray-400'}`} htmlFor="LineChart">LineChart</label>
                     </div>
                 </div>
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
@@ -183,8 +183,8 @@ const Analytics = () => {
                                                 },
                                             ],
                                         }}
-                                        height={50}
-                                        width={200}
+                                        height={150}
+                                        width={400}
                                         options={{
                                             maintainAspectRatio: true,
                                             responsive: true,
