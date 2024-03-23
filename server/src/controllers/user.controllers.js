@@ -27,7 +27,7 @@ const generateAccessandRefreshTokens = async (userId) => {
 }
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { userchannel, email, password } = req.body
+    const { username, email, password, channel } = req.body
 
     if ([username, email, password].some((field) => String(field).trim() === "")) {
         throw new ApiError(400, "All fields are Required")
@@ -55,6 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
         username: String(username).toLowerCase(),
         email,
         password,
+        channels: [channel] || []
     })
 
     const createdUser = await User.findById(user._id).select(" -password, -refreshToken")
@@ -183,14 +184,14 @@ const fetchHistory = asyncHandler(async (req, res)=>{
     return res
     .status(200)
     .json(new ApiResponse(200, user.history, "fetched history Successfully")); 
-}
+})
 
 const fetchChannels = asyncHandler(async (req, res)=>{
     const user = await User.findById(req.user._id)
     return res
     .status(200)
     .json(new ApiResponse(200, user.channels, "fetched channels Successfully")) 
-}
+})
 
 export {
     registerUser,

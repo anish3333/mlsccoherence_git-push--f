@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+
+const apiKey = 'AIzaSyAb3NLI7KKgrXuxDBTrtiaQkcRbeyeK6P0';
+// const Id = 'UCXgGY0wkgOzynnHvSEVmE3A';
+
+
 
 function YoutubeAnalyticsDashboard() {
-    const Id = useSelector((state)=>state.data);
-    console.log(Id)  
+    const Id = useSelector((state) => state.data);
+    console.log(Id)
     const [channelStatistics, setChannelStatistics] = useState(null);
     const [recentVideos, setRecentVideos] = useState([]);
     const [videoAnalytics, setVideoAnalytics] = useState([]);
@@ -21,7 +26,7 @@ function YoutubeAnalyticsDashboard() {
             console.error('Error fetching video analytics:', error);
         }
     }
-    
+
     useEffect(() => {
         async function fetchChannelStatistics() {
             try {
@@ -50,7 +55,7 @@ function YoutubeAnalyticsDashboard() {
             }
         }
 
-        
+
 
         fetchChannelStatistics();
         fetchRecentVideos();
