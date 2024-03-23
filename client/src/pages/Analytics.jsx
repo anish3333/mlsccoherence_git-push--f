@@ -73,7 +73,14 @@ const data = [
 const Analytics = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
+    const [pieChecked, setPieChecked] = useState(true);
+    const [barChecked, setBarChecked] = useState(true);
     const [lineChecked, setLineChecked] = useState(true);
+
+
+
+
+
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -81,6 +88,7 @@ const Analytics = () => {
     const handlesetPieChecked = (event) => {
         setPieChecked(!pieChecked);
     };
+    const handlesetBarChecked = (event) => {
         setBarChecked(!barChecked);
     };
     const handlesetLineChecked = (event) => {
