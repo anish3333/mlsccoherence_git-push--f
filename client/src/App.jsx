@@ -5,8 +5,9 @@ import Signup from "./components/Form/Signup"
 import Signin from "./components/Form/Signin"
 import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
-import Main from "./components/Hero/Main"
+import Main from "./pages/Main"
 import Faq from "./components/FAQ/Faq"
+import Home from "./pages/Home"
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Hero />} />
+        <Route path="/" element={<Home />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
         <Route path="/faq" element={<Faq />} />

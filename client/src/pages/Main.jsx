@@ -1,7 +1,7 @@
 import React from 'react'
-import Sidebar from '../Sidebar/Sidebar'
-import DisplayCard from '../Card/DisplayCard'
-import Footer from '../Footer/Footer'
+import Sidebar from '../components/Sidebar/Sidebar'
+import DisplayCard from '../components/Card/DisplayCard'
+import Footer from '../components/Footer/Footer'
 
 function Main() {
     return (

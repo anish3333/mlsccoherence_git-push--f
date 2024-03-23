@@ -32,42 +32,33 @@ export default function Faq() {
     return (
         <>
             <div id="1" className="m-2">
-                <div className="text-center bg-purple-200">
-                    FAQ
-                </div>
+
 
                 <Accordion animate={CUSTOM_ANIMATION} open={open === 1} icon={<Icon id={1} open={open} />}>
                     <AccordionHeader className={`border-b-0 transition-colors ${open === 1 ? "text-blue-500 hover:!text-blue-700" : ""
-                        }`} onClick={() => handleOpen(1)}>What is Material Tailwind?</AccordionHeader>
+                        }`} onClick={() => handleOpen(1)}>This is mostly an educated guess, based on some</AccordionHeader>
                     <AccordionBody>
-                        We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                        growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                        ourselves and actualize our dreams.
+                        This is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on some
                     </AccordionBody>
                 </Accordion>
                 <Accordion animate={CUSTOM_ANIMATION} open={open === 2} icon={<Icon id={2} open={open} />}>
                     <AccordionHeader className={`border-b-0 transition-colors ${open === 2 ? "text-blue-500 hover:!text-blue-700" : ""
                         }`} onClick={() => handleOpen(2)}>
-                        How to use Material Tailwind?
+                        This is mostly an educated guess, based on some
                     </AccordionHeader>
                     <AccordionBody>
-                        We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                        growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                        ourselves and actualize our dreams.
+                        This is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on some
                     </AccordionBody>
                 </Accordion>
                 <Accordion animate={CUSTOM_ANIMATION} open={open === 3} icon={<Icon id={3} open={open} />}>
                     <AccordionHeader className={`border-b-0 transition-colors ${open === 3 ? "text-blue-500 hover:!text-blue-700" : ""
                         }`} onClick={() => handleOpen(3)}>
-                        What can I do with Material Tailwind?
+                        This is mostly an educated guess, based on some
                     </AccordionHeader>
                     <AccordionBody>
-                        We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                        growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                        ourselves and actualize our dreams.
+                        This is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on someThis is mostly an educated guess, based on some
                     </AccordionBody>
                 </Accordion>
-                <div className="h-2 m-2 bg-black" />
             </div>
 
         </>

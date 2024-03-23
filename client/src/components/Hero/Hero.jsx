@@ -6,29 +6,14 @@ import Dialog1 from '../Form/Dialog1';
 function Hero() {
     return (
         <div>
-            <main className="dark:bg-gray-800 bg-white relative overflow-hidden h-screen">
+            <main className="dark:bg-gray-800 bg-gray-200 relative overflow-hidden h-screen">
                 <header className="h-24 sm:h-32 flex items-center z-30 w-full">
                     <div className="container mx-auto px-6 flex items-center justify-between">
                         <div className="uppercase text-gray-800 dark:text-white font-black text-3xl">
-                            Watch.ME
+                            Multi-Media
                         </div>
                         <div className="flex items-center">
                             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-                                {/* <a href="#" className="py-2 px-6 flex">
-                                    Home
-                                </a>
-                                <a href="#" className="py-2 px-6 flex">
-                                    Watch
-                                </a>
-                                <a href="#" className="py-2 px-6 flex">
-                                    Product
-                                </a>
-                                <a href="#" className="py-2 px-6 flex">
-                                    Contact
-                                </a>
-                                <a href="#" className="py-2 px-6 flex">
-                                    Carrer
-                                </a> */}
                                 <div className='mx-2'>
                                     <Dialog1 linkText={"Sign In"} />
                                 </div>
@@ -48,15 +33,15 @@ function Hero() {
                         </div>
                     </div>
                 </header>
-                <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
+                <div className="bg-gray-300 dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
                     <div className="container mx-auto px-6 flex relative py-16">
                         <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
                             <span className="w-20 h-2 bg-gray-800 dark:bg-white mb-12">
                             </span>
                             <h1 className="font-bebas-neue uppercase text-6xl sm:text-8xl font-black flex flex-col leading-none dark:text-white text-gray-800">
-                                Be on
+                                Get Your
                                 <span className="text-5xl sm:text-7xl">
-                                    Time
+                                    Analytics
                                 </span>
                             </h1>
                             <p className="text-sm sm:text-base text-gray-700 dark:text-white">
@@ -72,7 +57,7 @@ function Hero() {
                             </div>
                         </div>
                         <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
-                            <img src="https://www.tailwind-kit.com/images/object/10.png" className="max-w-xs md:max-w-sm m-auto" />
+                            <img src="https://imgs.search.brave.com/wnbdhLuEsR09K6gRqsbH1mpUKntzG1_rZ4I0jLt26ow/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA2/MjIwNjQ2L3Bob3Rv/L21lZGlhLWNvbmNl/cHQtc21hcnQtdHYu/d2VicD9iPTEmcz0x/NzA2NjdhJnc9MCZr/PTIwJmM9ZmJURzRi/alRFelFwVW5qSkQz/N1ZyNEFmNTBMYmVG/cDloV0hJV2ZubTNu/TT0" className="max-w-xs md:max-w-sm m-auto" />
                         </div>
                     </div>
                 </div>
