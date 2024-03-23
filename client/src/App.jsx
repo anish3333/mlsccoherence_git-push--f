@@ -22,7 +22,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 4700);
+    }, 4000);
   }, []);
   return loading ? (
     <Splash />
