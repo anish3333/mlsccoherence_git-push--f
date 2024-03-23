@@ -9,7 +9,11 @@ import Signup from "./components/Form/Signup"
 import Signin from "./components/Form/Signin"
 import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
-import Main from "./components/Hero/Main"
+// import Main from "./components/pages/Main"
+import Main from "./pages/Main"
+import Faq from "./components/FAQ/Faq"
+import YoutubeAnalyticsDashboard from "./pages/YoutubeAnalyticsDashboard"
+import Splash from "./pages/Splash"
 
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
         {/* testing */}
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/faq" element={<Faq />} />
 
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
