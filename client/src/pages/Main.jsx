@@ -30,7 +30,7 @@ function Main() {
 
 
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <div className='overflow-y-auto w-full'>
+            <div className='overflow-y-auto bg-gray-200 w-full'>
                 <div className='flex flex-wrap'>
                     <DisplayCard />
                 </div>
