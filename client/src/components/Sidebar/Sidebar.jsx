@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 'lucide-react'
+import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench, Home } from 'lucide-react'
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
@@ -7,6 +7,11 @@ import { FaBars } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 
 const navItems = [
+    {
+        name: 'Home',
+        icon: Home,
+        to: '/',
+    },
     {
         name: 'Dashboard',
         icon: BarChart,
@@ -56,9 +61,10 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
     return (
         <div className={`h-screen w-64 ${isSidebarOpen ? '' : 'hidden'} shrink-0`}>
 
-            <aside className="flex h-screen w-64 shrink-0 flex-col bg-black px-5 py-8 fixed z-10">
+            <aside className="flex h-screen w-64 shrink-0 flex-col bg-gray-400 text-black px-5 py-8 fixed z-10">
                 <Link to="#">
                     <svg
+
                         width="40"
                         height="46"
                         viewBox="0 0 50 56"
@@ -74,12 +80,12 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 <div className="mt-6 flex flex-1 flex-col justify-between">
                     <nav className="-mx-3 space-y-6 flex flex-col">
                         <div className="space-y-3 ">
-                            <label className="px-3 text-xs font-semibold uppercase text-white">analytics</label>
+                            <label className="px-3 text-xs font-semibold uppercase text-black"></label>
                             {
                                 navItems.map((item, idx) => (
                                     <NavLink
                                         className={({ isActive }) => {
-                                            return (`flex transform items-center rounded-lg px-3 py-2 text-gray-200 transition-colors duration-300 hover:bg-gray-50 hover:text-gray-700`
+                                            return (`flex transform items-center rounded-lg px-3 py-2 text-black transition-colors duration-300 hover:bg-gray-50 hover:text-gray-700`
                                                 + ((isActive) ? ' text-gray-700 bg-gray-50 ' : '  ')
                                             )
                                         }}
@@ -94,8 +100,8 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                                     </NavLink>
                                 ))
                             }
-                            <div className="text-white h-10 w-20 flex justify-between items-center fixed bottom-6">
-                                <div className='border-[2.5px] p-[0.25rem] rounded-full mx-2'>
+                            <div className="text-black h-10 w-20 flex justify-between items-center fixed bottom-6">
+                                <div className='border-black border-[2.5px] p-[0.25rem] rounded-full mx-2'>
                                     <FaUser className='text-xl' />
                                 </div>
                                 <div className='mx-2'>

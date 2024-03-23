@@ -16,7 +16,7 @@ function Main() {
 
     return (
         <div className='flex'>
-            {isSidebarOpen ? (
+            {/* {isSidebarOpen ? (
                 <div className='fixed text-black bg-white rounded-full p-2 text-4xl ml-40 z-20' onClick={toggleSidebar}>
                     ✖
                 </div>
@@ -24,7 +24,7 @@ function Main() {
                 <div className='fixed text-white bg-black rounded-full p-2 text-4xl ml-6 z-20' onClick={toggleSidebar}>
                     ≡
                 </div>
-            )}
+            )} */}
 
 
 
