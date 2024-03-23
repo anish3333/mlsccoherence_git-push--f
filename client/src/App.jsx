@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Sidebar from "./components/Sidebar/Sidebar"
 import Signup from "./components/Form/Signup"
 import Signin from "./components/Form/Signin"
+import Dialog1 from "./components/Form/Dialog1"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+<<<<<<< Updated upstream
         <Route path="/dashboard" element={<Sidebar />} />
         <Route path="/checklists" element={<Sidebar />} />
         <Route path="/settings" element={<Sidebar />} />
@@ -24,6 +26,11 @@ function App() {
         <Route path="/notifications" element={<Sidebar />} />
         <Route path="/themes" element={<Sidebar />} />
 
+=======
+        <Route path="/dialog" element={<Dialog1 />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+>>>>>>> Stashed changes
 
       </Routes>
     </>

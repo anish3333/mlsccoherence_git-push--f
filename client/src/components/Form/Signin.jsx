@@ -8,13 +8,14 @@ import {
     Checkbox,
     Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export default function Form1() {
     return (
 
         <div className="m-2 mt-12">
 
-            <Card className="w-96">
+            <Card className="w-96" >
                 <CardHeader
                     variant="gradient"
                     color="gray"
@@ -37,19 +38,18 @@ export default function Form1() {
                     </Button>
                     <Typography variant="small" className="mt-6 flex justify-center">
                         Don&apos;t have an account?
-                        <Typography
+                        <Link to="/signup"
                             as="a"
                             href="#signup"
                             variant="small"
                             color="blue-gray"
-                            className="ml-1 font-bold"
+                            className="ml-1 font-bold  text-blue-gray-500"
                         >
                             Sign up
-                        </Typography>
+                        </Link>
                     </Typography>
                 </CardFooter>
             </Card>
-            <div className="h-2 m-2 bg-black" />
         </div>
 
     );
