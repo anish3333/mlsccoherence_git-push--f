@@ -4,24 +4,30 @@ import {
     Checkbox,
     Button,
     Typography,
+    CardHeader,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
     return (
-        <div className="m-2">
+        <div className="m-2 p-4 mt-12" >
 
-            <Card color="transparent" shadow={false}>
-                <Typography variant="h4" color="blue-gray">
-                    Sign Up
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                    Nice to meet you! Enter your details to register.
-                </Typography>
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+            <Card className="w-fit p-5">
+                <CardHeader
+                    variant="gradient"
+                    color="gray"
+                    className="mb-4 grid h-28 place-items-center"
+                >
+                    <Typography variant="h3" color="white">
+                        Sign In
+                    </Typography>
+                </CardHeader>
+
+                <form className="mt-8 mb-2 mx-auto max-w-screen-lg sm:w-96">
                     <div className="mb-1 flex flex-col gap-6">
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                        <div variant="h6" color="blue-gray" className="-mb-3">
                             Your Name
-                        </Typography>
+                        </div>
                         <Input
                             size="lg"
                             placeholder="name@mail.com"
@@ -77,13 +83,12 @@ export default function Signup() {
                     </Button>
                     <Typography color="gray" className="mt-4 text-center font-normal">
                         Already have an account?{" "}
-                        <a href="#" className="font-medium text-gray-900">
+                        <Link to="/signin" className="font-medium text-gray-900">
                             Sign In
-                        </a>
+                        </Link>
                     </Typography>
                 </form>
             </Card>
-            <div className="h-2 m-2 bg-black" />
         </div>
 
     );
