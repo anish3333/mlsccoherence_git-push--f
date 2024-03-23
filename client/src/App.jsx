@@ -16,6 +16,14 @@ function App() {
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/dashboard" element={<Sidebar />} />
+        <Route path="/checklists" element={<Sidebar />} />
+        <Route path="/settings" element={<Sidebar />} />
+        <Route path="/sales" element={<Sidebar />} />
+        <Route path="/blogs" element={<Sidebar />} />
+        <Route path="/notifications" element={<Sidebar />} />
+        <Route path="/themes" element={<Sidebar />} />
+
 
       </Routes>
     </>
