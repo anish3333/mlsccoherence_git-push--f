@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 
-const apiKey = 'AIzaSyAb3NLI7KKgrXuxDBTrtiaQkcRbeyeK6P0';
-// const Id = 'UCXgGY0wkgOzynnHvSEVmE3A';
+const apiKey = 'AIzaSyCZenXO4rYPYpGImTX1SuSBrNTeYNcB2tY';
+const Id = 'UCXgGY0wkgOzynnHvSEVmE3A';
 
 
 
 function YoutubeAnalyticsDashboard() {
-    const Id = useSelector((state) => state.data);
+    // const Id = useSelector((state) => state.data);
+    // const Id = "UCX6OQ3DkcsbYNE6H8uQQuVA"
     console.log(Id)
     const [channelStatistics, setChannelStatistics] = useState(null);
     const [recentVideos, setRecentVideos] = useState([]);
@@ -59,7 +60,7 @@ function YoutubeAnalyticsDashboard() {
 
         fetchChannelStatistics();
         fetchRecentVideos();
-    }, [apiKey, channelId]);
+    }, [apiKey, Id]);
 
     useEffect(() => {
         async function fetchAllVideoAnalytics() {
