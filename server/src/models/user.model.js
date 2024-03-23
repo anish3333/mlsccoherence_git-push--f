@@ -28,11 +28,11 @@ const userSchema = new Schema(
         },
         history: [
             {
-                type: string,
+                type: String,
             }
         ],
         channels: [
-            {type: string}
+            {type: String}
         ],
         token: {
             type: String

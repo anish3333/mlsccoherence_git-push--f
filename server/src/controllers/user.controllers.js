@@ -178,11 +178,27 @@ const addToChannels = asyncHandler(async (req, res)=>{
 })
 
 
+const fetchHistory = asyncHandler(async (req, res)=>{
+    const user = await User.findById(req.user._id)
+    return res
+    .status(200)
+    .json(new ApiResponse(200, user.history, "fetched history Successfully")); 
+}
+
+const fetchChannels = asyncHandler(async (req, res)=>{
+    const user = await User.findById(req.user._id)
+    return res
+    .status(200)
+    .json(new ApiResponse(200, user.channels, "fetched channels Successfully")) 
+}
+
 export {
     registerUser,
     loginUser,
     logoutUser,
     getUserData,
     addToHistory,
-    addToChannels
+    addToChannels,
+    fetchChannels,
+    fetchHistory,
 }
