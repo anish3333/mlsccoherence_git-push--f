@@ -28,56 +28,42 @@ const generateAccessandRefreshTokens = async(userId)=>{
 }
 
 const registerUser = asyncHandler(async (req,res) =>{   
-  const {email,username,password} = req.body         
-  // console.log("email",email);
-  if(
-      [email,username,password].some((field)=>String(field).trim() === "")      
-  )
-  {
-      throw new ApiError(400,"All fields are Required")
-  }
+    const {username,email,password} = req.body
+    
+    if( [username,email,password].some((field)=>String(field).trim() === "") ) {
+        throw new ApiError(400,"All fields are Required")
+    }
 
-  const existedUser = await User.findOne({  //1st occurance 
-      $or: [ {username} , {email} ]        // retuns doc that matches the 1st occurance of the given username or email
-  })
+    const alreadyExistingUser = User.findOne({
+            $or: [{username},{email}]
+    })
 
-  if(existedUser){
-      throw new ApiError(409,"User with same User name or email exists")
-  }
+    if(alreadyExistingUser){
+        throw new ApiError(409,"Username or Email already in Use")
+    }
 
-  
-  const avatarLocalPath = req.file?.path;
-  if(!avatarLocalPath)
-  {
-      throw new ApiError(400,"Avatar file is required")
-  }
+    const avatarLocalPath = req.file?.path
+    if(!avatarLocalPath){
+        avatarLocalPath = "../assets/default.png"
+    }
 
-  const avatar = await uploadOnCloudinary(avatarLocalPath)   
-  if(!avatar)
-  {
-      throw new ApiError(400,"Avatar file is required")
-  }
+    const avatar = uploadOnCloudinary(avatarLocalPath)
+    if(!avatar){
+        throw new ApiError(400,"Uploading Avatar to cloudinary Failed")
+    }
 
-  const user = await User.create({
-      avatar: avatar.url,      //we dont wanna send entire object(img) of avatar but just its url
-      email,
-      password,
-      username: String(username).toLowerCase()
-  })  
-  
-  const createdUser = await User.findById(user._id).select(
-      "-password -refreshToken"                     
-  )
+    const user = await User.create({
+        username: String(username).toLowerCase(),
+        email,
+        password,
+        avatar: avatar.url,
+    })
 
+    const createdUser = await User.findById(user._id).select(" -password, -refreshToken")
 
-  if(!createdUser)    //not exists
-  {
-      throw new ApiError(500,"something went wrong while registering User")
-  }
-
-  return res.status(201).json(
-    new ApiResponse(200,createdUser,"User Registered Successfully")
-  )
+    return res
+    .status(201)
+    .json(new ApiResponse(200,createdUser,"User registered Successfully"))
 
 })
 
