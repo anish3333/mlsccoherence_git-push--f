@@ -1,6 +1,10 @@
 import React from 'react'
 import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 'lucide-react'
 import { NavLink, Link } from 'react-router-dom'
+import { useState } from 'react'
+import { FaUser } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
+
 
 const navItems = [
     {
@@ -41,6 +45,9 @@ const navItems = [
 ]
 
 export default function Sidebar() {
+
+    let [isUser, setIsUser] = useState(false);
+
     return (
         <aside className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-black px-5 py-8">
             <Link to="#">
@@ -58,7 +65,7 @@ export default function Sidebar() {
                 </svg>
             </Link>
             <div className="mt-6 flex flex-1 flex-col justify-between">
-                <nav className="-mx-3 space-y-6 ">
+                <nav className="-mx-3 space-y-6 flex flex-col">
                     <div className="space-y-3 ">
                         <label className="px-3 text-xs font-semibold uppercase text-white">analytics</label>
                         {
@@ -80,8 +87,17 @@ export default function Sidebar() {
                                 </NavLink>
                             ))
                         }
-
+                        <div className="text-white h-10 w-20 flex justify-between items-center fixed bottom-6">
+                            <div className='border-[2.5px] p-[0.25rem] rounded-full mx-2'>
+                                <FaUser className='text-xl' />
+                            </div>
+                            <div className='mx-2'>
+                                Username
+                            </div>
+                        </div>
                     </div>
+
+
                 </nav>
             </div>
         </aside>
