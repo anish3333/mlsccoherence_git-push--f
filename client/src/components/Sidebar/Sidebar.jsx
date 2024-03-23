@@ -49,7 +49,7 @@ export default function Sidebar() {
     let [isUser, setIsUser] = useState(false);
 
     return (
-        <aside className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-black px-5 py-8">
+        <aside className="flex h-full relative w-64 flex-col overflow-y-auto border-r bg-black px-5 py-8">
             <Link to="#">
                 <svg
                     width="40"
@@ -87,7 +87,7 @@ export default function Sidebar() {
                                 </NavLink>
                             ))
                         }
-                        <div className="text-white h-10 w-20 flex justify-between items-center fixed bottom-6">
+                        <div className="text-white h-10 w-20 flex justify-between items-center sticky bottom-1">
                             <div className='border-[2.5px] p-[0.25rem] rounded-full mx-2'>
                                 <FaUser className='text-xl' />
                             </div>
