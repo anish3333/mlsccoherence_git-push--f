@@ -40,6 +40,8 @@ function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/splash" element={<Splash />} />
+
 
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
