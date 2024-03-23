@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+<<<<<<< Updated upstream
 import Faq from '../FAQ/Faq';
+=======
+import Dialog1 from '../Form/Dialog1';
+>>>>>>> Stashed changes
 
 function Hero() {
     return (
@@ -13,7 +17,7 @@ function Hero() {
                         </div>
                         <div className="flex items-center">
                             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-                                <a href="#" className="py-2 px-6 flex">
+                                {/* <a href="#" className="py-2 px-6 flex">
                                     Home
                                 </a>
                                 <a href="#" className="py-2 px-6 flex">
@@ -25,9 +29,22 @@ function Hero() {
                                 <a href="#" className="py-2 px-6 flex">
                                     Contact
                                 </a>
+<<<<<<< Updated upstream
                                 <Link to="#1" className="py-2 px-6 flex">
                                     Faq
                                 </Link>
+=======
+                                <a href="#" className="py-2 px-6 flex">
+                                    Carrer
+                                </a> */}
+                                <div className='mx-2'>
+                                    <Dialog1 linkText={"Sign In"} />
+                                </div>
+                                <div className='mx-2'>
+                                    <Dialog1 linkText={"Sign Up"} />
+                                </div>
+
+>>>>>>> Stashed changes
                             </nav>
                             <button className="lg:hidden flex flex-col ml-4">
                                 <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1">

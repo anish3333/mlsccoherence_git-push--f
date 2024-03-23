@@ -29,7 +29,7 @@ function App() {
         <Route path="/blogs" element={<Sidebar />} />
         <Route path="/notifications" element={<Sidebar />} />
         <Route path="/themes" element={<Sidebar />} />
-        <Route path="/dialog" element={<Dialog1 />} />
+        <Route path="/dialog" element={<Dialog1 linkText={"Sign In"} />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
 

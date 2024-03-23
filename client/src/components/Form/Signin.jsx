@@ -9,6 +9,7 @@ import {
     Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Dialog1 from "./Dialog1";
 
 export default function Form1() {
     return (
@@ -36,7 +37,7 @@ export default function Form1() {
                     <Button variant="gradient" fullWidth>
                         Sign In
                     </Button>
-                    <Typography variant="small" className="mt-6 flex justify-center">
+                    {/* <Typography variant="small" className="mt-6 flex justify-center">
                         Don&apos;t have an account?
                         <Link to="/signup"
                             as="a"
@@ -47,7 +48,8 @@ export default function Form1() {
                         >
                             Sign up
                         </Link>
-                    </Typography>
+                        <Dialog1 linkText={"Sign Up"} />
+                    </Typography> */}
                 </CardFooter>
             </Card>
         </div>

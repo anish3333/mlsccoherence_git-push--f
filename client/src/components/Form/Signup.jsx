@@ -7,6 +7,7 @@ import {
     CardHeader,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Dialog1 from "./Dialog1";
 
 export default function Signup() {
     return (
@@ -83,12 +84,13 @@ export default function Signup() {
                     <Button className="mt-6" fullWidth>
                         sign up
                     </Button>
-                    <Typography color="gray" className="mt-4 text-center font-normal">
+                    {/* <Typography color="gray" className="mt-4 text-center font-normal">
                         Already have an account?{" "}
                         <Link to="/signin" className="font-medium text-gray-900">
                             Sign In
                         </Link>
-                    </Typography>
+                        <Dialog1 linkText={"Sign In"} />
+                    </Typography> */}
                 </form>
             </Card>
         </div>
