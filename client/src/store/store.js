@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 import userSliceReducer from "./slices/User.slices.js"
-import dataSliceReducer from "./slices/Data.slices.js"
+import ChannelIDSlices from "./slices/ChannelID.slices.js";
 
 const store = configureStore({
     reducer:{
         user: userSliceReducer,
-        data: dataSliceReducer
+        channelID:ChannelIDSlices
     }
 })
 

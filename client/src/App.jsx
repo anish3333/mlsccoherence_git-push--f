@@ -6,6 +6,8 @@ import Signin from "./components/Form/Signin"
 import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
 import Main from "./components/Hero/Main"
+import YoutubeAnalyticsDashboard from "./pages/YoutubeAnalyticsDashboard"
+
 
 
 function App() {
@@ -18,7 +20,6 @@ function App() {
         {/* <Route path="/home" element={<Hero />} /> */}
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
-
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
@@ -26,7 +27,7 @@ function App() {
         <Route path="/checklists" element={<Sidebar />} />
         <Route path="/settings" element={<Sidebar />} />
         <Route path="/sales" element={<Sidebar />} />
-        <Route path="/blogs" element={<Sidebar />} />
+        <Route path="/blogs" element={<YoutubeAnalyticsDashboard />} />
         <Route path="/notifications" element={<Sidebar />} />
         <Route path="/themes" element={<Sidebar />} />
         <Route path="/dialog" element={<Dialog1 />} />
