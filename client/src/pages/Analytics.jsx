@@ -99,8 +99,8 @@ const Analytics = () => {
     return (
         <div className="flex">
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <div className='overflow-y-auto w-full overflow-hidden'>
-                <div className="bg-gray-500">
+            <div className='overflow-y-hidden w-full overflow-hidden'>
+                <div className="bg-gray-300 flex justify-around">
 
                     <div>
                         {/* Checkbox input */}
@@ -108,9 +108,11 @@ const Analytics = () => {
                             type="checkbox"
                             checked={pieChecked}
                             onChange={handlesetPieChecked}
+                            id="PieChart"
+                            className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label>PieChart</label>
+                        <label htmlFor="PieChart" className=" bg-gray-700 p-3 rounded-xl" >PieChart</label>
                     </div>
 
                     <div>
@@ -119,9 +121,11 @@ const Analytics = () => {
                             type="checkbox"
                             checked={barChecked}
                             onChange={handlesetBarChecked}
+                            id="BarGraph"
+                            className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label>BarGraph</label>
+                        <label htmlFor="BarGraph" className=" bg-gray-700 p-3 rounded-xl">BarGraph</label>
                     </div>
 
                     <div>
@@ -130,9 +134,11 @@ const Analytics = () => {
                             type="checkbox"
                             checked={lineChecked}
                             onChange={handlesetLineChecked}
+                            id="LineChart"
+                            className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label className="text-black">LineChart</label>
+                        <label className=" bg-gray-700 p-3 rounded-xl" htmlFor="LineChart">LineChart</label>
                     </div>
                 </div>
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
