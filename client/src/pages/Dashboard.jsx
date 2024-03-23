@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import Footer from '../components/Footer/Footer'
+import { useState } from 'react'
 
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
@@ -11,10 +12,10 @@ defaults.responsive = true;
 defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
-defaults.plugins.title.color = "white";
+defaults.plugins.title.color = "black";
 ChartJS.defaults.backgroundColor = '#9BD0F5';
-ChartJS.defaults.borderColor = 'rgba(103, 103, 103, 1)';
-ChartJS.defaults.color = '#FFFFFF';
+ChartJS.defaults.borderColor = 'rgba(206, 206, 206, 1)';
+ChartJS.defaults.color = '#000';
 
 const data = [
     {
@@ -51,16 +52,23 @@ const data = [
 
 
 function Dashboard() {
+
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
     return (
+
         <div className="flex">
-            <Sidebar />
+            <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <div className='overflow-y-auto w-full overflow-hidden'>
-                <div className='flex flex-col flex-wrap bg-gray-500 w-full h-screen items-center'>
+                <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
                     <div className='h-[60%] w-full flex justify-evenly mt-4'>
-                        <div className='w-[38%] h-[96%] bg-gray-800 p-8 rounded-2xl'>
+                        <div className='w-[38%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
                             Analytics
                         </div>
-                        <div className='w-[58%] h-[96%] bg-gray-800 p-8 rounded-2xl'>
+                        <div className='w-[58%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
                             <Bar
                                 data={{
                                     labels: data.map((item) => item.label),
@@ -102,7 +110,7 @@ function Dashboard() {
                             />
                         </div>
                     </div>
-                    <div className='h-[36%] w-[98%] bg-gray-800 p-8 my-2 mt-1 rounded-2xl'>
+                    <div className='h-[36%] w-[98%] bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
                         <Line
                             data={{
                                 labels: data.map((item) => item.label),

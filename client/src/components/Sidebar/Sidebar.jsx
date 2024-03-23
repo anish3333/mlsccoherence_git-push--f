@@ -3,9 +3,8 @@ import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 
 import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
 import { FaBars } from 'react-icons/fa'
-
+import { useSelector, useDispatch } from 'react-redux'
 
 const navItems = [
     {
@@ -14,9 +13,9 @@ const navItems = [
         to: '/dashboard',
     },
     {
-        name: 'Sales',
+        name: 'Analytics',
         icon: Wallet,
-        to: '/sales',
+        to: '/analytics',
     },
     {
         name: 'Blogs',
@@ -56,11 +55,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
 
     return (
         <div className={`h-screen w-64 ${isSidebarOpen ? '' : 'hidden'} shrink-0`}>
-
-
-
-
-
 
             <aside className="flex h-screen w-64 shrink-0 flex-col bg-black px-5 py-8 fixed z-10">
                 <Link to="#">

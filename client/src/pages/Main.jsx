@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
 import DisplayCard from '../components/Card/DisplayCard';
 import Footer from '../components/Footer/Footer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Main() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
