@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const navItems = [
     {
@@ -50,12 +51,14 @@ const navItems = [
 ]
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
+    const navigate = useNavigate();
 
     const openSidebar = () => {
         setIsSidebarOpen(true);
     };
 
-
+    const user = useSelector((state) => state.user);
+    // console.log(user);
 
 
     return (
@@ -128,8 +131,27 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                                 <FaUser className='text-xl' />
                             </div>
                             <div className='mx-2'>
-                                Username
+                                {user?.data.username || 'User'}
                             </div>
+                            <div>
+                                <button className='focus:outline-none'
+                                    onClick={() => {
+                                        ; (
+                                            async () => {
+                                                await fetch('/api/v1/user/logout', {
+                                                    method: 'GET',
+                                                })
+                                                    .then((res) => {
+                                                        navigate('/')
+                                                        // console.log(res);
+                                                    })
+                                            }
+                                        )()
+                                    }}>
+                                    Sign Out
+                                </button>
+                            </div>
+
                         </div>
 
                     </nav>

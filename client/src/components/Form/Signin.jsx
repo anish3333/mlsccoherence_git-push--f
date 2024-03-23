@@ -14,6 +14,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../../store/slices/User.slices.js";
 
 export default function Form1() {
     const dispatch = useDispatch();
@@ -38,10 +39,16 @@ export default function Form1() {
             );
 
             if (response.data && response.data.message) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert(response.data.message);
-                dispatch(setUser(response.data));
-                navigate("/");
+
+                const user = await axios.get(
+                    '/api/v1/user/getuser',
+                );
+                // console.log(user.data.data)
+
+                dispatch(setUser(user.data.data));
+                navigate("/main");
             } else {
                 // Handle error response properly
                 alert("An error occurred while submitting the form");

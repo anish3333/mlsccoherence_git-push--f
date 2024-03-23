@@ -10,12 +10,15 @@ import { Link } from "react-router-dom";
 import Dialog1 from "./Dialog1";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
+        channel: '',
     });
 
     const handleChange = (e) => {
@@ -35,9 +38,9 @@ export default function Signup() {
                     },
                 }
             );
-            console.log(response.data);
+            // console.log(response.data);
             alert(response.data.message);
-            navigate("/main");
+            navigate("/");
         } catch (error) {
             console.error("Error:", error);
             // alert("An error occurred while submitting the form");
@@ -102,6 +105,20 @@ export default function Signup() {
                             }}
                             onChange={handleChange}
                         />
+                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                            Your Youtube Channel Name
+                        </Typography>
+                        <Input
+                            name="channel"
+                            type="text"
+                            size="lg"
+                            placeholder="MrBeast"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                            onChange={handleChange}
+                        />
                     </div>
                     <Checkbox
                         label={
@@ -121,12 +138,15 @@ export default function Signup() {
                         }
                         containerProps={{ className: "-ml-2.5" }}
                     />
-                    <button
-                        type="submit"
-                        className="group relative w-[55%] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Sign Up
-                    </button>
+                    <div className="flex justify-center">
+                        <button
+                            type="submit"
+                            className="group relative w-[55%] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Sign Up
+                        </button>
+
+                    </div>
                 </form>
             </Card>
         </div>

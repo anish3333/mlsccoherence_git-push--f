@@ -3,8 +3,17 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
 import DisplayCard from '../components/Card/DisplayCard';
 import Footer from '../components/Footer/Footer';
+import { useSelector } from 'react-redux';
+import fetchChannelName from '../hooks/fetchChannelName';
 
 function Main() {
+    const user = useSelector((state) => state.user);
+
+    async function fetchChannel() {
+        await fetchChannelName({ channelName: user.data.channels[0] });
+    }
+    fetchChannel();
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
