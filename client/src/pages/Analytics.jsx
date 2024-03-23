@@ -1,10 +1,13 @@
-
+// data in vidData, fix charts, chart js
 import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
+
+import apiKey from "../components/constants"
 
 defaults.maintainAspectRatio = true;
 defaults.responsive = true;
@@ -25,52 +28,93 @@ const data = [
         retentionRate: 20,
         age: 30,
         videoTitle: "Video 1 Updated",
-    },
-    {
-        label: "February",
-        totalViews: 380,
-        subscribers: 20,
-        retentionRate: 30,
-        age: 40,
-        videoTitle: "Video 2 Updated",
-    },
-    {
-        label: "March",
-        totalViews: 350,
-        subscribers: 10,
-        retentionRate: 80,
-        age: 20,
-        videoTitle: "Video 3 Updated",
-    },
-    {
-        label: "April",
-        totalViews: 600, // Adjusted peak
-        subscribers: 60,
-        retentionRate: 60,
-        age: 15,
-        videoTitle: "Video 4 Updated",
-    },
-    {
-        label: "May",
-        totalViews: 200, // Adjusted peak
-        subscribers: 40,
-        retentionRate: 20,
-        age: 20,
-        videoTitle: "Video 5 Updated",
-    },
-    {
-        label: "June",
-        totalViews: 300, // Adjusted peak
-        subscribers: 32,
-        retentionRate: 30,
-        age: 30,
-        videoTitle: "Video 6 Updated",
-    },
+    }
 ];
 
-// console.log(data);
+// console.log(data)
 
 const Analytics = () => {
+    const Id = useSelector((state) => state.channelID.data);
+    // console.log(Id)
+
+    const [videos, setVideos] = useState([]);
+    const [videoAnalytics, setVideoAnalytics] = useState([]);
+    const [vidData, setVidData] = useState([]);
+    // {
+    //     "viewCount": "152974",
+    //     "likeCount": "7731",
+    //     "favoriteCount": "0",
+    //     "commentCount": "683"
+    //   }
+
+    useEffect(() => {
+        async function fetchRecentVideos() {
+            try {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${Id}&order=date&maxResults=6&key=${apiKey}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch recent videos');
+                }
+                const data = await response.json();
+                setVideos(data.items);
+                setVidData(data.items.map((item) => {
+                    return {
+                        videoTitle: item.snippet.title,
+                        videoId: item.id.videoId,
+                        videDesc: item.snippet.description,
+                    }
+                }))
+                console.log(data.items);
+            } catch (error) {
+                console.error('Error fetching recent videos:', error);
+            }
+        }
+
+        fetchRecentVideos();
+    }, [apiKey, Id]);
+
+    async function fetchVideoAnalytics(videoId) {
+        try {
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${apiKey}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch video analytics');
+            }
+            const data = await response.json();
+            // console.log(response.data)
+            return (data.items[0].statistics)
+        } catch (error) {
+            console.error('Error fetching video analytics:', error);
+        }
+    }
+
+    useEffect(() => {
+        async function fetchAllVideoAnalytics() {
+            try {
+                const analytics = await Promise.all(videos.map(video => fetchVideoAnalytics(video.id.videoId)));
+
+                setVideoAnalytics(analytics);
+                const updatedVidData = videos.map((video, index) => {
+                    return {
+                        videoTitle: video.snippet.title,
+                        videoId: video.id.videoId,
+                        videoDesc: video.snippet.description,
+                        viewCount: analytics[index].viewCount,
+                        likeCount: analytics[index].likeCount,
+                        commentCount: analytics[index].commentCount,
+                    };
+                });
+
+                setVidData(updatedVidData);
+            } catch (error) {
+                console.error('Error fetching all video analytics:', error);
+            }
+        }
+
+        if (videos.length > 0) {
+            fetchAllVideoAnalytics();
+        }
+    }, [videos]);
+
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const [pieChecked, setPieChecked] = useState(true);
@@ -94,7 +138,20 @@ const Analytics = () => {
     const handlesetLineChecked = (event) => {
         setLineChecked(!lineChecked);
     };
+    // console.log(" Vids : ", videos)
 
+    // console.log(" Anals : ", videoAnalytics)
+
+    console.log(" VidData : ", vidData)
+
+    // {
+    //     "videoTitle": "Keep Track Of Car, Win $10,000",
+    //     "videoId": "OnTTThIzuNU",
+    //     "videoDesc": "",
+    //     "viewCount": "42875439",
+    //     "likeCount": "2683650",
+    //     "commentCount": "10119"
+    // }
 
     return (
         <div className="flex">
@@ -155,21 +212,21 @@ const Analytics = () => {
                             pieChecked ?
                                 (<div className='w-[38%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
 
-                                    {/* Doughnut age */}
+
                                     <Doughnut
                                         data={{
-                                            labels: data.map((item) => item.age),
+                                            labels: vidData.map((item) => item.videoTitle),
                                             datasets: [
                                                 {
-                                                    label: "Age",
-                                                    data: data.map((item) => item.age),
+                                                    label: "Comment Count",
+                                                    data: vidData.map((item) => item.likeCount),
                                                     backgroundColor: [
-                                                        "rgba(255, 99, 132, 0.6)",
-                                                        "rgba(54, 162, 235, 0.6)",
-                                                        "rgba(255, 206, 86, 0.6)",
-                                                        "rgba(75, 192, 192, 0.6)",
-                                                        "rgba(153, 102, 255, 0.6)",
-                                                        "rgba(255, 159, 64, 0.6)",
+                                                        "rgba(255, 99, 132, 0.2)",
+                                                        "rgba(54, 162, 235, 0.2)",
+                                                        "rgba(255, 206, 86, 0.2)",
+                                                        "rgba(75, 192, 192, 0.2)",
+                                                        "rgba(153, 102, 255, 0.2)",
+                                                        "rgba(255, 159, 64, 0.2)",
                                                     ],
                                                     borderColor: [
                                                         "rgba(255, 99, 132, 1)",
@@ -183,14 +240,19 @@ const Analytics = () => {
                                                 },
                                             ],
                                         }}
-                                        height={150}
-                                        width={400}
+                                        height={400}
+                                        width={600}
                                         options={{
-                                            maintainAspectRatio: true,
+                                            maintainAspectRatio: false,
                                             responsive: true,
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true,
+                                                },
+                                            },
                                             plugins: {
                                                 title: {
-                                                    text: "Age",
+                                                    text: "Comment Count for last 6 videos",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -201,6 +263,7 @@ const Analytics = () => {
                                             },
                                         }}
                                     />
+
 
                                 </div>) : ''
                         }
@@ -213,11 +276,11 @@ const Analytics = () => {
                                 (<div className='w-[58%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
                                     <Bar
                                         data={{
-                                            labels: data.map((item) => item.label),
+                                            labels: vidData.map((item) => item.title),
                                             datasets: [
                                                 {
-                                                    label: "Total Views",
-                                                    data: data.map((item) => item.totalViews),
+                                                    label: "Like Count",
+                                                    data: vidData.map((item) => item.commentCount),
                                                     backgroundColor: "rgba(108, 108, 255, 1)",
                                                     borderColor: "rgba(0, 0, 190, 1)",
                                                     borderWidth: 1,
@@ -229,7 +292,7 @@ const Analytics = () => {
                                         height={400}
                                         width={600}
                                         options={{
-                                            maintainAspectRatio: true,
+                                            maintainAspectRatio: false,
                                             responsive: true,
                                             scales: {
                                                 y: {
@@ -238,7 +301,7 @@ const Analytics = () => {
                                             },
                                             plugins: {
                                                 title: {
-                                                    text: "Highest Views in a Month",
+                                                    text: "Like Count for last 6 videos",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -261,33 +324,34 @@ const Analytics = () => {
                     {
                         lineChecked ?
                             (<div className='h-[36%] w-[98%] relative bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
+
                                 <Line
                                     data={{
-                                        labels: data.map((item) => item.videoTitle),
+                                        labels: vidData.map((item) => item.title),
                                         datasets: [
                                             {
-                                                label: "Likes",
-                                                data: data.map((item) => item.subscribers),
-                                                fill: true,
-                                                backgroundColor: "rgba(0, 173, 3, 1)",
-                                                borderColor: "rgba(0, 173, 3, 1)",
+                                                label: "Subscribers",
+                                                data: vidData.map((item) => item.commentCount),
+                                                fill: false,
+                                                backgroundColor: "rgba(255, 0, 0, 1)",
+                                                borderColor: "rgba(255, 0, 0, 1)",
                                             },
                                         ],
                                     }}
-                                    // height={40}
-                                    // width={20}
-                                    className="h-[10%] w-[20%]"
+                                    height={400}
+                                    width={600}
                                     options={{
-                                        maintainAspectRatio: true,
+                                        maintainAspectRatio: false,
                                         responsive: true,
                                         scales: {
                                             y: {
-                                                beginAtZero: true,
+                                                type: 'linear', // Ensure linear scaling for y-axis
+                                                beginAtZero: false,
                                             },
                                         },
                                         plugins: {
                                             title: {
-                                                text: "Like Count for last 6 Videos",
+                                                text: "Subscriber Count",
                                                 align: "center",
                                                 display: true,
                                                 font: {

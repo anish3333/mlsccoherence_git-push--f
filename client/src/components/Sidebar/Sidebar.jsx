@@ -126,15 +126,18 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
 
                         </div>
 
-                        <div className="text-black h-10 w-20 flex justify-between items-center fixed bottom-6">
-                            <div className='border-black border-[2.5px] p-[0.25rem] rounded-full mx-2'>
-                                <FaUser className='text-xl' />
-                            </div>
-                            <div className='mx-2'>
-                                {user?.data.username || 'User'}
+                        <div className="text-black h-16 w-64 bg-gray-500 flex justify-evenly items-center fixed bottom-0 left-0">
+                            <div className='flex items-center justify-evenly'>
+
+                                <div className='border-black border-[2.5px] p-[0.25rem] rounded-full'>
+                                    <FaUser className='text-xl' />
+                                </div>
+                                <div className='mx-2'>
+                                    {user?.data.username || 'User'}
+                                </div>
                             </div>
                             <div>
-                                <button className='focus:outline-none'
+                                <button className='focus:outline-none w-full bg-gray-600 hover:bg-gray-700 hover:text-gray-300 text-gray-200 py-2 px-4 rounded'
                                     onClick={() => {
                                         ; (
                                             async () => {

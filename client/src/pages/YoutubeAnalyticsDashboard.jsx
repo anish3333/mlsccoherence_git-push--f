@@ -73,7 +73,7 @@ function YoutubeAnalyticsDashboard() {
         }
 
         if (recentVideos.length > 0) {
-            fetchAllVideoAnalytics();
+            // fetchAllVideoAnalytics();
         }
     }, [recentVideos]);
 

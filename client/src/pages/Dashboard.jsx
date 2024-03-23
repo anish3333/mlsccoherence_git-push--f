@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 
+import apiKey from '../components/constants'
+
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
 
@@ -16,6 +18,7 @@ defaults.plugins.title.color = "black";
 ChartJS.defaults.backgroundColor = '#9BD0F5';
 ChartJS.defaults.borderColor = 'rgba(206, 206, 206, 1)';
 ChartJS.defaults.color = '#000';
+
 
 const data = [
     {
@@ -49,8 +52,6 @@ const data = [
         subscribers: 32,
     },
 ]
-
-const apiKey = 'AIzaSyCZenXO4rYPYpGImTX1SuSBrNTeYNcB2tY';
 
 function Dashboard() {
     const Id = useSelector((state) => state.channelID.data);
