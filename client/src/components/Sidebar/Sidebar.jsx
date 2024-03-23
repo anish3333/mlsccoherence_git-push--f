@@ -187,90 +187,110 @@
 // export default Sidebar
 
 //
-import React, { useState } from 'react';
-import {
-    DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
-    return {
-        key,
-        icon,
-        children,
-        label,
-    };
-}
-const items = [
-    getItem('Option 1', '1', <PieChartOutlined />),
-    getItem('Option 2', '2', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
-    ]),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem('Files', '9', <FileOutlined />),
-];
-const Sidebar = () => {
-    const [collapsed, setCollapsed] = useState(false);
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
+import navimg from '../../assets/MandoBlackbgPFPcircle.png';
+import { NavLink } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
+import { useState } from 'react';
+
+let navdata = [
+    {
+        name: 'Home',
+        icon: FaUser,
+        link: '/',
+    },
+    {
+        name: 'About',
+        icon: FaUser,
+        link: '/about',
+    },
+    {
+        name: 'Projects',
+        icon: FaUser,
+        link: '/projects',
+    },
+    {
+        name: 'Skills',
+        icon: FaUser,
+        link: '/skills',
+    },
+    {
+        name: 'Contact',
+        icon: FaUser,
+        link: '/contact',
+    }
+]
+export default function Navbar() {
+    let onMobile = false;
+    (window.innerWidth < 1280) ? onMobile = true : onMobile = false;
+
+    // useEffect(() => {
+    //     window.addEventListener('resize', () => {
+    //         (window.innerWidth < 1280) ? onMobile = true : onMobile = false;
+    //     })
+    // }, [window.innerWidth]);
+
+    const [expanded, setExpanded] = useState(!onMobile);
+    //h-screen shrink-0 bg-[#24282d] basis-[5%]
     return (
-        <Layout
-            style={{
-                minHeight: '100vh',
-            }}
-        >
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-            </Sider>
-            <Layout>
-                <Header
-                    style={{
-                        padding: 0,
-                        background: colorBgContainer,
-                    }}
-                />
-                <Content
-                    style={{
-                        margin: '0 16px',
-                    }}
-                >
-                    <Breadcrumb
-                        style={{
-                            margin: '16px 0',
-                        }}
-                    >
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div
-                        style={{
-                            padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
-                            borderRadius: borderRadiusLG,
-                        }}
-                    >
-                        MAyuresh is a pig.
+        <>
+            <div className={`h-screen h-[100dvh] shrink-0 bg-[#24282d] z-10 absolute xl:static ${expanded ? "basis-[14rem]" : "basis-[6rem] left-[-6rem]"}`}>
+                <div className="flex justify-center items-center w-full h-1/5">
+                    {expanded && (<div className='flex justify-center items-center w-full'>
+                        <img src={navimg} alt="img" className="h-20 w-20" />
+                    </div>)}
+                    <div className='p-4'>
+                        <button
+                            onClick={() => {
+                                setExpanded(!expanded);
+                            }}
+                            className='h-10 w-10 text-[#eeeeee] cursor-pointer'>
+                            {expanded ? <FaUser className='h-full w-full hover:scale-110 transition-all duration-400' /> : <FaUser className='h-full w-full hover:scale-110 transition-all duration-400' />}
+                        </button>
+
                     </div>
-                </Content>
-                <Footer
-                    style={{
-                        textAlign: 'center',
-                    }}
-                >
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
-                </Footer>
-            </Layout>
-        </Layout>
-    );
-};
-export default Sidebar;
+                </div>
+                <div className="h-3/5 flex flex-col justify-center">
+                    <ul className="flex flex-col items-center">
+                        {navdata.map((item, index) => (
+                            <li className="h-full w-full flex justify-center items-center" key={index}>
+                                <NavLink to={item.link}
+
+                                    {...(onMobile ? {
+                                        onClick: () => {
+                                            setExpanded(!expanded);
+                                        }
+                                    } : {}
+                                    )}
+                                    className={({ isActive }) => {
+                                        return (`rounded-lg text-2xl/8 p-4 my-1 mx-4 flex items-center hover:bg-[#1a1b1b] ${expanded ? 'w-[12rem]' : 'w-[4rem]'} `
+                                            + ((isActive) ? ' bg-[#1a1b1b] text-[#eeeeee]' : ' bg-[#24282d] text-[#c0c0c0]')
+                                        )
+                                    }}>
+                                    <FaUser className={`h-8 w-8`} />
+                                    {expanded && (<p className="pl-3">{item.name}</p>)}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="h-1/5 w-full flex items-end justify-center">
+                    <NavLink to='/resume'
+                        // className='rounded-lg text-2xl/10 p-3 m-2 w-3/4 flex items-center hover:bg-[#1a1b1b]'
+                        className={({ isActive }) => {
+                            return ('transition-all duration-[450ms] h-1/2 w-full flex items-center justify-center font-extrabold text-3xl hover:bg-[#ffc54d] hover:text-[#1a1b1b] '
+                                +
+                                ((isActive) ? ' bg-[#ffc54d] text-[#1a1b1b]' : ' bg-[#1a1b1b] text-[#eeeeee]')
+                            )
+                        }}>
+                        {expanded ? ('Resume') : ('R')}
+                    </NavLink>
+                </div>
+            </div >
+            {!expanded && <button onClick={() => {
+                setExpanded(!expanded);
+            }} className='h-10 w-10 text-[#61677A] m-5 absolute xl:hidden z-10 border-2 rounded-[1.25rem] p-[0.5rem] bg-[#eeeeee]'>
+                <FaUser className='h-full w-full' />
+            </button>}
+        </>
+    )
+}
