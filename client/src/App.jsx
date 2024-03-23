@@ -3,9 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import Dashboard from "./pages/Dashboard"
 import Analytics from "./pages/Analytics"
-
-
-
+import { useEffect, useState } from "react"
 import Sidebar from "./components/Sidebar/Sidebar"
 import Signup from "./components/Form/Signup"
 import Signin from "./components/Form/Signin"
@@ -13,12 +11,23 @@ import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
 import Main from "./pages/Main"
 import Faq from "./components/FAQ/Faq"
+import Splash from "./pages/Splash"
 
 
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4700);
+  }, []);
+  return loading ? (
+    <Splash />
+  ) : (
 
-  return (
+
     <>
       <Routes>
         <Route path="/" element={<Home />} />
