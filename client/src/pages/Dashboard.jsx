@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import Footer from '../components/Footer/Footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
