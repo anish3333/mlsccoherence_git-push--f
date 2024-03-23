@@ -7,8 +7,9 @@ import {
     DialogFooter,
 } from "@material-tailwind/react";
 import Signup from "./Signup";
+import Signin from "./Signin";
 
-export default function Dialog1() {
+export default function Dialog1({ linkText, children }) {
     const [open, setOpen] = React.useState(false);
 
     const handleOpen = () => setOpen(!open);
@@ -17,7 +18,7 @@ export default function Dialog1() {
         <>
             <div>
                 <Button onClick={handleOpen} variant="gradient">
-                    Open Dialog
+                    {linkText}
                 </Button>
                 <Dialog
                     open={open}
@@ -27,8 +28,13 @@ export default function Dialog1() {
                         unmount: { scale: 0.9, y: -100 },
                     }}
                 >
-
-                    <Signup />
+                    <div className="h-full w-full flex items-center justify-center">
+                        {linkText === "Sign In" ? (
+                            <Signin />
+                        ) : (
+                            <Signup />
+                        )}
+                    </div>
                 </Dialog>
             </div>
 
