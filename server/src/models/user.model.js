@@ -26,6 +26,14 @@ const userSchema = new Schema(
         avatar: {
             type: String, // cloudinary url
         },
+        history: [
+            {
+                type: String,
+            }
+        ],
+        channels: [
+            {type: String}
+        ],
         token: {
             type: String
         }
