@@ -6,18 +6,18 @@ import Signin from "./components/Form/Signin"
 import Dialog1 from "./components/Form/Dialog1"
 import Hero from "./components/Hero/Hero"
 import Main from "./components/Hero/Main"
+import Faq from "./components/FAQ/Faq"
 
 
 function App() {
 
   return (
     <>
-      {/* <div className="w-20 border-2 h-20">Test</div> */}
       <Routes>
         <Route path="/" element={<Hero />} />
-        {/* <Route path="/home" element={<Hero />} /> */}
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/faq" element={<Faq />} />
 
         <Route path="/sidebar" element={<Sidebar />} />
         <Route path="/signup" element={<Signup />} />

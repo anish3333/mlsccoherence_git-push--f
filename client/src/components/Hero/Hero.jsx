@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Faq from '../FAQ/Faq';
 
 function Hero() {
     return (
@@ -24,9 +25,9 @@ function Hero() {
                                 <a href="#" className="py-2 px-6 flex">
                                     Contact
                                 </a>
-                                <a href="#" className="py-2 px-6 flex">
-                                    Carrer
-                                </a>
+                                <Link to="#1" className="py-2 px-6 flex">
+                                    Faq
+                                </Link>
                             </nav>
                             <button className="lg:hidden flex flex-col ml-4">
                                 <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1">

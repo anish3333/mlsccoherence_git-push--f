@@ -26,68 +26,10 @@ export default function DisplayCard() {
     return (
         <div className="flex flex-col w-full justify-center px-12 py-4">
 
-            {
-                //         cardItems.map((item, index) => (
-                //             <Card
-                //                 key={index}
-                //                 shadow={false}
-                //                 className="relative m-8 grid h-[28rem] w-[28rem] max-w-[28rem] items-end justify-center overflow-hidden text-center rounded-3xl"
-                //             >
-                //                 <CardHeader
-                //                     floated={false}
-                //                     shadow={false}
-                //                     color="transparent"
-                //                     className='absolute inset-0 m-0 h-full w-full rounded-none bg-cover bg-center'
-                //                     style={{ backgroundImage: `url(${item.img})` }}
-                //                 >
-                //                     <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gray-800">
-                //                         <Avatar
-                //                             size="xl"
-                //                             variant="circular"
-                //                             alt="img"
-                //                             className="border-2 border-white"
-                //                             src={item.img}
-                //                         />
-                //                     </div>
-
-                //                 </CardHeader>
-                //                 <CardBody className="relative py-14 px-6 md:px-12">
-
-                //                     <Typography
-                //                         variant="h2"
-                //                         color="white"
-                //                         className="mb-6 font-medium leading-[1.5]"
-                //                     >
-                //                         {item.title}
-                //                     </Typography>
-                //                     <Typography variant="h5" className="mb-4 text-gray-400">
-                //                         {item.desc}
-                //                     </Typography>
-
-                //                 </CardBody>
-                //             </Card>
-                //         ))
-            }
 
             {
                 cardItems.map((item, index) => (
-                    // <div className="relative h-[400px] w-[400px] rounded-3xl m-6">
-                    //     <img
-                    //         src={item.img}
-                    //         alt={item.title}
-                    //         className="z-0 h-full w-full rounded-md object-cover"
-                    //     />
-                    //     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent to-50%"></div>
-                    //     <div className="absolute bottom-4 left-4 text-left">
-                    //         <h1 className="text-lg font-semibold text-white">{item.title}</h1>
-                    //         <p className="mt-2 text-sm text-gray-300">
-                    //             {item.desc}
-                    //         </p>
-                    //         <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-                    //             View Profile &rarr;
-                    //         </button>
-                    //     </div>
-                    // </div>
+
                     <div className="border-2 w-full flex flex-col items-center rounded-2xl md:flex-row hover:scale-105 hover:shadow-2xl my-4 hover:border-0">
                         <div className="h-full w-full md:h-[300px] md:w-[300px] shrink-0">
                             <img
@@ -132,58 +74,6 @@ export default function DisplayCard() {
                 ))
             }
 
-
-
-            {/* <div className="relative h-[400px] w-[400px] rounded-md m-6">
-                <img
-                    src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-                    alt="AirMax Pro"
-                    className="z-0 h-full w-full rounded-md object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-left">
-                    <h1 className="text-lg font-semibold text-white">Delba</h1>
-                    <p className="mt-2 text-sm text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?
-                    </p>
-                    <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-                        View Profile &rarr;
-                    </button>
-                </div>
-            </div> */}
-
-            {/* <Card
-                shadow={false}
-                className="relative grid h-[40rem] w-full max-w-[28rem] items-end justify-center overflow-hidden text-center"
-            >
-                <CardHeader
-                    floated={false}
-                    shadow={false}
-                    color="transparent"
-                    className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
-                >
-                    <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
-                </CardHeader>
-                <CardBody className="relative py-14 px-6 md:px-12">
-                    <Typography
-                        variant="h2"
-                        color="white"
-                        className="mb-6 font-medium leading-[1.5]"
-                    >
-                        How we design and code open-source projects?
-                    </Typography>
-                    <Typography variant="h5" className="mb-4 text-gray-400">
-                        Tania Andrew
-                    </Typography>
-                    <Avatar
-                        size="xl"
-                        variant="circular"
-                        alt="tania andrew"
-                        className="border-2 border-white"
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                    />
-                </CardBody>
-            </Card> */}
         </div >
 
     );
