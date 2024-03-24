@@ -7,7 +7,7 @@ import {
     Tooltip,
 } from "@material-tailwind/react";
 
-export default function Card2({ name, title },pic) {
+export default function Card2({ name, title ,pic}) {
     return (
         <div>
 
