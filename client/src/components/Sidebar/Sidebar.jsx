@@ -27,16 +27,6 @@ const navItems = [
         icon: Wallet,
         to: '/analytics',
     },
-    {
-        name: 'Top Videos',
-        icon: BellRing,
-        to: '/topvideos',
-    },
-    {
-        name: 'History',
-        icon: Newspaper,
-        to: '/history',
-    },
 ]
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {

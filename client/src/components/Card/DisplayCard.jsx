@@ -6,6 +6,7 @@ import {
     Avatar,
 } from "@material-tailwind/react";
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const cardItems = [
     {
@@ -30,8 +31,8 @@ export default function DisplayCard() {
             {
                 cardItems.map((item, idx) => (
 
-                    <div key={idx} className="border-2 w-full h-screen flex flex-col items-center rounded-2xl md:flex-row hover:shadow-2xl my-4  hover:border-0">
-                        <div className="h-full w-full md:h-[300px] md:w-[300px] bg-gray-300 shrink-0">
+                    <Link to="/dashboard" key={idx} className="border-2 w-full h-screen flex flex-col items-center rounded-2xl md:flex-row my-4  hover:border-0">
+                        <div className="h-[80%] w-full md:h-[300px] md:w-[300px] bg-gray-300 shrink-0">
                             <img
                                 src={item.img}
                                 alt="Laptop"
@@ -70,7 +71,7 @@ export default function DisplayCard() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))
             }
 

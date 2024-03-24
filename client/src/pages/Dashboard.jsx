@@ -23,32 +23,32 @@ ChartJS.defaults.color = '#000';
 const data = [
     {
         label: "January",
-        totalViews: 100,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 10,
     },
     {
         label: "February",
-        totalViews: 200,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 20,
     },
     {
         label: "March",
-        totalViews: 300,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 10,
     },
     {
         label: "April",
-        totalViews: 400,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 60,
     },
     {
         label: "May",
-        totalViews: 600,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 40,
     },
     {
         label: "June",
-        totalViews: 360,
+        totalViews: Math.floor(Math.random() * (600 - 200 + 1)) + 100,
         subscribers: 32,
     },
 ]
