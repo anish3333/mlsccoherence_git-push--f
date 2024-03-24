@@ -40,12 +40,6 @@ const Analytics = () => {
     const [videos, setVideos] = useState([]);
     const [videoAnalytics, setVideoAnalytics] = useState([]);
     const [vidData, setVidData] = useState([]);
-    // {
-    //     "viewCount": "152974",
-    //     "likeCount": "7731",
-    //     "favoriteCount": "0",
-    //     "commentCount": "683"
-    //   }
 
     useEffect(() => {
         async function fetchRecentVideos() {
@@ -85,6 +79,27 @@ const Analytics = () => {
             console.error('Error fetching video analytics:', error);
         }
     }
+
+    const findMaxVideo = (category) => {
+        let maxVideo = null;
+        let maxValue = -1;
+
+        vidData.forEach((video) => {
+            if (video[category] > maxValue) {
+                maxVideo = video;
+                maxValue = video[category];
+            }
+        });
+
+        return maxVideo;
+    };
+
+    // Get the video with the maximum likes
+    const maxLikesVideo = findMaxVideo("likeCount");
+    // Get the video with the maximum views
+    const maxViewsVideo = findMaxVideo("viewCount");
+    // Get the video with the maximum comments
+    const maxCommentsVideo = findMaxVideo("commentCount");
 
     useEffect(() => {
         async function fetchAllVideoAnalytics() {
@@ -218,7 +233,7 @@ const Analytics = () => {
                                             labels: vidData.map((item) => item.videoTitle),
                                             datasets: [
                                                 {
-                                                    label: "Comment Count",
+                                                    label: "Likes",
                                                     data: vidData.map((item) => item.likeCount),
                                                     backgroundColor: [
                                                         "rgba(255, 99, 132, 0.2)",
@@ -252,7 +267,7 @@ const Analytics = () => {
                                             },
                                             plugins: {
                                                 title: {
-                                                    text: "Comment Count for last 6 videos",
+                                                    text: "Likes in Past Week",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -323,7 +338,7 @@ const Analytics = () => {
 
                     {
                         lineChecked ?
-                            (<div className='h-[36%] w-[98%] relative bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
+                            (<div className='h-[36%] w-[98%] bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
 
                                 <Line
                                     data={{
@@ -366,7 +381,24 @@ const Analytics = () => {
                             ) : ''
                     }
 
+
                 </div>
+                <div className="overflow-y-hidden bg-black h-screen text-white leading-normal">
+                    <h2 className="text-white leading-normal">Videos with Maximum Performance</h2>
+                    <div className="max-video">
+                        <h3 className="leading-normal">Most Liked Video:</h3>
+                        {maxLikesVideo && <p>{maxLikesVideo.videoTitle}</p>}
+                    </div>
+                    <div className="max-video">
+                        <h3>Most Viewed Video:</h3>
+                        {maxViewsVideo && <p>{maxViewsVideo.videoTitle}</p>}
+                    </div>
+                    <div className="max-video">
+                        <h3 className="leading-normal">Most Commented Video:</h3>
+                        {maxCommentsVideo && <p className="leading-10">{maxCommentsVideo.videoTitle}</p>}
+                    </div>
+                </div>
+
 
                 {/* <Footer /> */}
             </div>
