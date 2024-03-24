@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Faq from '../FAQ/Faq';
 import Dialog1 from '../Form/Dialog1';
+import heroimg from '../../assets/istockphoto-1408387701-612x612.jpg'
 
 function Hero() {
     return (
@@ -57,7 +58,7 @@ function Hero() {
                             </div>
                         </div>
                         <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
-                            <img src="https://imgs.search.brave.com/wnbdhLuEsR09K6gRqsbH1mpUKntzG1_rZ4I0jLt26ow/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA2/MjIwNjQ2L3Bob3Rv/L21lZGlhLWNvbmNl/cHQtc21hcnQtdHYu/d2VicD9iPTEmcz0x/NzA2NjdhJnc9MCZr/PTIwJmM9ZmJURzRi/alRFelFwVW5qSkQz/N1ZyNEFmNTBMYmVG/cDloV0hJV2ZubTNu/TT0" className="max-w-xs md:max-w-sm m-auto" />
+                            <img src={heroimg} className='rounded-full' />
                         </div>
                     </div>
                 </div>

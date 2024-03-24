@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import background from "../assets/depositphotos_22532345-stock-photo-social-media-concept.jpg"
 
 function Splash() {
     const text = "Weelcome to ANALYTICAL world";
@@ -28,10 +29,10 @@ function Splash() {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 0 }}
                     transition={{ delay: 3.5, duration: 0.5 }}
-                    className="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden opacity-85 bg-transparent">
+                    className="relative bg-gradient-to-r from-gray-800 to-gray-600 h-screen text-white overflow-hidden opacity-85 bg-transparent">
                     <div className="absolute inset-0">
-                        <img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxjb2RlfGVufDB8MHx8fDE2OTQwOTg0MTZ8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Background Image" className="object-cover object-center w-full h-full" />
-                        <div className="absolute inset-0 bg-black opacity-50"></div>
+                        <img src={background} className='w-full h-screen opacity-20' />
+                        <div className="absolute inset-0 bg-black opacity-30"></div>
                     </div>
 
                     <div className="relative z-10 flex justify-center items-center h-full text-center">
