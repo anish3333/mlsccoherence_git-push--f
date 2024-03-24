@@ -17,7 +17,7 @@ export default function Dialog1({ linkText, children }) {
     return (
         <>
             <div>
-                <Button onClick={handleOpen} variant="gradient">
+                <Button id="signin" onClick={handleOpen} variant="gradient">
                     {linkText}
                 </Button>
                 <Dialog

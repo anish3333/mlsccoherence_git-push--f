@@ -7,13 +7,18 @@ import { Button } from '@material-tailwind/react';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Dialog } from '@material-tailwind/react';
+import Signin from '../Form/Signin';
 
 function Hero() {
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.user.data)
+    console.log(user);
 
-    const isUserLoggedIn = useState(user ? true : false)
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => setOpen(!open);
 
     return (
         <div>
@@ -25,7 +30,15 @@ function Hero() {
                         </div>
                         <div className="flex items-center">
                             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-                                {isUserLoggedIn ? (
+                                {/* <>
+                                    <div className='mx-2'>
+                                        <Dialog1 linkText={"Sign In"} />
+                                    </div>
+                                    <div className='mx-2'>
+                                        <Dialog1 linkText={"Sign Up"} />
+                                    </div>
+                                </> */}
+                                {user === null ? (
                                     <>
                                         <div className='mx-2'>
                                             <Dialog1 linkText={"Sign In"} />
@@ -34,7 +47,8 @@ function Hero() {
                                             <Dialog1 linkText={"Sign Up"} />
                                         </div>
                                     </>
-                                ) :
+                                )
+                                    :
                                     <div className='mx-2'>
                                         <Button onClick={() => {
                                             ; (
@@ -81,15 +95,24 @@ function Hero() {
                                 Dimension of reality that makes change possible and understandable. An indefinite and homogeneous environment in which natural events and human existence take place.
                             </p>
                             <div className="flex mt-8">
-                                <Link to="/main" className="uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400">
+                                {
+                                    user ? <Link to="/main" className="uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400">
+                                        Get started
+                                    </Link> : <Link to="/main" className="uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400">
+                                        Get started
+                                    </Link>
+
+                                }
+                                {/* <Link to="/main" className="uppercase py-2 px-4 rounded-lg bg-pink-500 border-2 border-transparent text-white text-md mr-4 hover:bg-pink-400">
                                     Get started
-                                </Link>
+                                </Link> */}
+
                                 <a href="#" className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-pink-500 text-pink-500 dark:text-white hover:bg-pink-500 hover:text-white text-md">
                                     Read more
                                 </a>
                             </div>
                         </div>
-                        <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
+                        <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative ml-48">
                             <img src={heroimg} className='rounded-full' />
                         </div>
                     </div>

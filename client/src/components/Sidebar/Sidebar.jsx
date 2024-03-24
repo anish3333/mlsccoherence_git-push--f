@@ -28,30 +28,15 @@ const navItems = [
         to: '/analytics',
     },
     {
-        name: 'Blogs',
-        icon: Newspaper,
-        to: '/blogs',
-    },
-    {
-        name: 'Notifications',
+        name: 'Top Videos',
         icon: BellRing,
-        to: '/notifications',
+        to: '/topvideos',
     },
     {
-        name: 'Checklists',
-        icon: Paperclip,
-        to: '/checklists',
+        name: 'History',
+        icon: Newspaper,
+        to: '/history',
     },
-    {
-        name: 'Themes',
-        icon: Brush,
-        to: '/themes',
-    },
-    {
-        name: 'Settings',
-        icon: Wrench,
-        to: '/settings',
-    }
 ]
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {

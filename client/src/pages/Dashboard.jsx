@@ -90,10 +90,10 @@ function Dashboard() {
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
                     <div className='h-[60%] w-full flex justify-evenly mt-4'>
                         <div className='w-[38%] h-[96%] bg-gray-200 p-8 rounded-2xl flex flex-col'>
-                            <div className='text-center font-bold text-xl'>
-                                Analytics
+                            <div className='text-center font-bold text-3xl'>
+                                Quick Analytics at a Glance
                             </div>
-                            <div>
+                            <div className='flex flex-col justify-evenly items-center h-full pt-10'>
                                 <div className='text-center font-bold text-lg'>
                                     Total Views : {analytics?.viewCount}
                                 </div>
