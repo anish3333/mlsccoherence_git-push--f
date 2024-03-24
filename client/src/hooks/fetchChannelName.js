@@ -16,7 +16,7 @@ function fetchChannelName({ channelName }) {
                     UrlOrUsername: channelName
                 },
                 headers: {
-                    'X-RapidAPI-Key': '02cbbd951amshb59d620a25a424cp1aba42jsnc434b1380a06',
+                    'X-RapidAPI-Key': 'dceffcc06emsh029ed3005837887p1743bbjsn7ac63d80e637',
                     'X-RapidAPI-Host': 'the-better-youtube-channel-details.p.rapidapi.com'
                 }
             };

@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom';
 import Faq from '../FAQ/Faq';
 import Dialog1 from '../Form/Dialog1';
 import heroimg from '../../assets/istockphoto-1408387701-612x612.jpg'
+import { Button } from '@material-tailwind/react';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Hero() {
+    const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user.data)
+
+    const isUserLoggedIn = useState(user ? true : false)
+
     return (
         <div>
             <main className="dark:bg-gray-800 bg-gray-200 relative overflow-hidden h-screen">
@@ -15,12 +25,34 @@ function Hero() {
                         </div>
                         <div className="flex items-center">
                             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-                                <div className='mx-2'>
-                                    <Dialog1 linkText={"Sign In"} />
-                                </div>
-                                <div className='mx-2'>
-                                    <Dialog1 linkText={"Sign Up"} />
-                                </div>
+                                {isUserLoggedIn ? (
+                                    <>
+                                        <div className='mx-2'>
+                                            <Dialog1 linkText={"Sign In"} />
+                                        </div>
+                                        <div className='mx-2'>
+                                            <Dialog1 linkText={"Sign Up"} />
+                                        </div>
+                                    </>
+                                ) :
+                                    <div className='mx-2'>
+                                        <Button onClick={() => {
+                                            ; (
+                                                async () => {
+                                                    await fetch('/api/v1/user/logout', {
+                                                        method: 'GET',
+                                                    })
+                                                        .then((res) => {
+                                                            navigate('/')
+                                                            // console.log(res);
+                                                        })
+                                                }
+                                            )()
+                                        }} variant="gradient">
+                                            Sign Out
+                                        </Button>
+                                    </div>}
+
 
                             </nav>
                             <button className="lg:hidden flex flex-col ml-4">
