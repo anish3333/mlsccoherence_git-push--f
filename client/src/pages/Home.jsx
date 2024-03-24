@@ -4,10 +4,10 @@ import ProfileCard from '../components/Card/ProfileCard'
 import Faq from '../components/FAQ/Faq'
 import Footer from '../components/Footer/Footer'
 import Card2 from '../components/Card/Card2'
-import Sarvesh from '../assets/sarvesh.jpg'
-import Soham from '../assets/soham.jpg'
-import Anish from '../assets/anish.jpg'
-import Mayuresh from '../assets/mayuresh.jpg'
+import Sarvesh from '../assets/sarvesh.jpeg'
+import Soham from '../assets/soham.jpeg'
+import Anish from '../assets/anish.jpeg'
+import Mayuresh from '../assets/mayuresh.jpeg'
 
 function Home() {
     return (

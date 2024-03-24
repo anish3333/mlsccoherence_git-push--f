@@ -7,13 +7,13 @@ import {
     Tooltip,
 } from "@material-tailwind/react";
 
-export default function Card2({ name, title }) {
+export default function Card2({ name, title },pic) {
     return (
         <div>
 
             <Card className="w-80 min-h-72">
                 <CardHeader floated={false} className="h-72">
-                    <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
+                    <img src={pic} alt="profile-picture" />
                 </CardHeader>
                 <CardBody className="text-center">
                     <Typography variant="h4" color="blue-gray" className="mb-2">
