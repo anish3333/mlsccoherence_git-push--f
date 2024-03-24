@@ -1,6 +1,5 @@
 // data in vidData, fix charts, chart js
 import Sidebar from "../components/Sidebar/Sidebar";
-import Footer from "../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
