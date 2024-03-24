@@ -44,20 +44,27 @@ const Analytics = () => {
     useEffect(() => {
         async function fetchRecentVideos() {
             try {
-                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${Id}&order=date&maxResults=6&key=${apiKey}`);
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${Id}&order=viewCount&maxResults=50&key=${apiKey}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch recent videos');
                 }
                 const data = await response.json();
-                setVideos(data.items);
-                setVidData(data.items.map((item) => {
+
+                // Sorting the videos based on view count
+                const sortedVideos = data.items.sort((a, b) => b.statistics.viewCount - a.statistics.viewCount);
+
+                // Selecting the top 6 videos
+                const top6Videos = sortedVideos.slice(0, 6);
+
+                setVideos(top6Videos);
+                setVidData(top6Videos.map((item) => {
                     return {
                         videoTitle: item.snippet.title,
                         videoId: item.id.videoId,
-                        videDesc: item.snippet.description,
+                        videoDesc: item.snippet.description,
                     }
-                }))
-                console.log(data.items);
+                }));
+                console.log(top6Videos);
             } catch (error) {
                 console.error('Error fetching recent videos:', error);
             }
@@ -65,6 +72,7 @@ const Analytics = () => {
 
         fetchRecentVideos();
     }, [apiKey, Id]);
+
 
     async function fetchVideoAnalytics(videoId) {
         try {
@@ -167,6 +175,8 @@ const Analytics = () => {
     //     "likeCount": "2683650",
     //     "commentCount": "10119"
     // }
+
+    
 
     return (
         <div className="flex">
