@@ -55,7 +55,7 @@ const data = [
 
 function Dashboard() {
     const Id = useSelector((state) => state.channelID.data);
-    console.log(Id)
+    // console.log("mayuresh ", Id)
     const [analytics, setAnalytics] = useState(null);
 
     useEffect(() => {
@@ -66,7 +66,7 @@ function Dashboard() {
                     throw new Error('Failed to fetch channel statistics');
                 }
                 const data = await response.json();
-                console.log(data.items[0].statistics);
+                // console.log(data.items[0].statistics);
 
                 setAnalytics(data.items[0].statistics);
 

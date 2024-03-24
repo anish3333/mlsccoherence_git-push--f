@@ -16,14 +16,16 @@ function fetchChannelName({ channelName }) {
                     UrlOrUsername: channelName
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'dceffcc06emsh029ed3005837887p1743bbjsn7ac63d80e637',
+                    'X-RapidAPI-Key': '72cf9111afmshd0924638c85e11bp18ce67jsne69246d3ef9f',
                     'X-RapidAPI-Host': 'the-better-youtube-channel-details.p.rapidapi.com'
                 }
             };
 
+
             try {
                 const response = await axios.request(options);
-                // console.log(response.data.data.channel_id);
+                // console.log("hello ", response.data.data.channel_id);
+
                 dispatch(setChannelID(response.data.data.channel_id));
             } catch (error) {
                 console.error('Error fetching channel data:', error);
