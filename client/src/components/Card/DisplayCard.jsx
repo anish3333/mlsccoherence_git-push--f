@@ -14,12 +14,12 @@ const cardItems = [
         desc: "Check your Youtube analytics",
         link: "/dashboard/youtube",
     },
-    {
-        img: "https://assets.dryicons.com/uploads/icon/svg/8337/a347cd89-1662-4421-be90-58e5e8004eae.svg",
-        title: "LinkedIn",
-        desc: "Check your LinkedIn Analytics",
-        link: "/dashboard/linkedin"
-    }
+    // {
+    //     img: "https://assets.dryicons.com/uploads/icon/svg/8337/a347cd89-1662-4421-be90-58e5e8004eae.svg",
+    //     title: "LinkedIn",
+    //     desc: "Check your LinkedIn Analytics",
+    //     link: "/dashboard/linkedin"
+    // }
 ]
 
 export default function DisplayCard() {
@@ -30,12 +30,12 @@ export default function DisplayCard() {
             {
                 cardItems.map((item, idx) => (
 
-                    <div key={idx} className="border-2 w-full flex flex-col items-center rounded-2xl md:flex-row hover:shadow-2xl my-4 bg-gray-300 hover:border-0">
-                        <div className="h-full w-full md:h-[300px] md:w-[300px] shrink-0">
+                    <div key={idx} className="border-2 w-full h-screen flex flex-col items-center rounded-2xl md:flex-row hover:shadow-2xl my-4  hover:border-0">
+                        <div className="h-full w-full md:h-[300px] md:w-[300px] bg-gray-300 shrink-0">
                             <img
                                 src={item.img}
                                 alt="Laptop"
-                                className="h-full w-full rounded-l-2xl object-cover"
+                                className="h-full w-full rounded-2xl object-cover"
                             />
                         </div>
                         <div className="w-full">

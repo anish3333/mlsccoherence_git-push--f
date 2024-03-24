@@ -89,7 +89,7 @@ function Hero() {
                                 </a>
                             </div>
                         </div>
-                        <div className="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
+                        <div className="hidden ml-48 sm:block sm:w-1/3 lg:w-3/5 relative">
                             <img src={heroimg} className='rounded-full' />
                         </div>
                     </div>

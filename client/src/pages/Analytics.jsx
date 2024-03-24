@@ -179,7 +179,7 @@ const Analytics = () => {
     
 
     return (
-        <div className="flex">
+        <div className="flex bg-gray-100">
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <div className='overflow-y-hidden h-full w-full overflow-hidden'>
                 <div className="bg-gray-300 flex h-16 items-center justify-around">
@@ -194,7 +194,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="PieChart" className={`  p-3 rounded-xl ${pieChecked ? 'bg-gray-700' : 'bg-gray-400'}`} >PieChart</label>
+                        <label htmlFor="PieChart" className={`  p-3 rounded-xl ${pieChecked ? 'bg-gray-200' : 'bg-gray-500'}`} >PieChart</label>
                     </div>
 
                     <div>
@@ -207,7 +207,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="BarGraph" className={`  p-3 rounded-xl ${barChecked ? 'bg-gray-700' : 'bg-gray-400'}`}>BarGraph</label>
+                        <label htmlFor="BarGraph" className={`  p-3 rounded-xl ${barChecked ? 'bg-gray-200' : 'bg-gray-500'}`}>BarGraph</label>
                     </div>
 
                     <div>
@@ -220,7 +220,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label className={`  p-3 rounded-xl ${lineChecked ? 'bg-gray-700' : 'bg-gray-400'}`} htmlFor="LineChart">LineChart</label>
+                        <label className={`  p-3 rounded-xl ${lineChecked ? 'bg-gray-200' : 'bg-gray-500'}`} htmlFor="LineChart">LineChart</label>
                     </div>
                 </div>
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
@@ -393,18 +393,18 @@ const Analytics = () => {
 
 
                 </div>
-                <div className="overflow-y-hidden bg-black h-screen text-white leading-normal">
-                    <h2 className="text-white leading-normal">Videos with Maximum Performance</h2>
+                <div className="overflow-y-hidden w-[70%] mx-auto bg-gray-200 h-full p-28 text-black leading-normal">
+                    <h2 className="text-black leading-normal text-xl">Videos with Maximum Performance</h2>
                     <div className="max-video">
-                        <h3 className="leading-normal">Most Liked Video:</h3>
+                        <h3 className="leading-normal text-xl">Most Liked Video:</h3>
                         {maxLikesVideo && <p>{maxLikesVideo.videoTitle}</p>}
                     </div>
                     <div className="max-video">
-                        <h3>Most Viewed Video:</h3>
+                        <h3 className="text-xl">Most Viewed Video:</h3>
                         {maxViewsVideo && <p>{maxViewsVideo.videoTitle}</p>}
                     </div>
                     <div className="max-video">
-                        <h3 className="leading-normal">Most Commented Video:</h3>
+                        <h3 className="leading-normal text-xl">Most Commented Video:</h3>
                         {maxCommentsVideo && <p className="leading-10">{maxCommentsVideo.videoTitle}</p>}
                     </div>
                 </div>

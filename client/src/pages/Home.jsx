@@ -4,6 +4,10 @@ import ProfileCard from '../components/Card/ProfileCard'
 import Faq from '../components/FAQ/Faq'
 import Footer from '../components/Footer/Footer'
 import Card2 from '../components/Card/Card2'
+import Sarvesh from '../assets/sarvesh.jpg'
+import Soham from '../assets/soham.jpg'
+import Anish from '../assets/anish.jpg'
+import Mayuresh from '../assets/mayuresh.jpg'
 
 function Home() {
     return (
@@ -14,11 +18,11 @@ function Home() {
 
             <div>
                 <div className='flex m-2 flex-wrap justify-between'>
-                    <Card2 name="Mayuresh Chavan" title="Team leader" />
-                    <Card2 name="Anish Awasti" title="Member 1 " />
+                    <Card2 pic={Mayuresh} name="Mayuresh Chavan" title="Team leader" />
+                    <Card2 pic={Anish} name="Anish Awasti" title="Member 1 " />
 
-                    <Card2 name="Soham Avarsekar" title="Member 2" />
-                    <Card2 name="Sarvesh Yogi" title="Member 3" />
+                    <Card2 pic={Soham} name="Soham Avarsekar" title="Member 2" />
+                    <Card2 pic={Sarvesh} name="Sarvesh Yogi" title="Member 3" />
                 </div>
             </div>
             <div>
