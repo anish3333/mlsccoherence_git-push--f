@@ -218,7 +218,7 @@ const Analytics = () => {
                                             labels: vidData.map((item) => item.videoTitle),
                                             datasets: [
                                                 {
-                                                    label: "Comment Count",
+                                                    label: "Likes",
                                                     data: vidData.map((item) => item.likeCount),
                                                     backgroundColor: [
                                                         "rgba(255, 99, 132, 0.2)",
@@ -252,7 +252,7 @@ const Analytics = () => {
                                             },
                                             plugins: {
                                                 title: {
-                                                    text: "Comment Count for last 6 videos",
+                                                    text: "Likes on recent videos",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -330,7 +330,7 @@ const Analytics = () => {
                                         labels: vidData.map((item) => item.videoTitle.length > 15 ? item.videoTitle.substring(0, 15) + '...' : item.videoTitle),
                                         datasets: [
                                             {
-                                                label: "Subscribers",
+                                                label: "Comments",
                                                 data: vidData.map((item) => item.commentCount),
                                                 fill: false,
                                                 backgroundColor: "rgba(255, 0, 0, 1)",
@@ -351,7 +351,7 @@ const Analytics = () => {
                                         },
                                         plugins: {
                                             title: {
-                                                text: "Subscriber Count",
+                                                text: "Comments in recent videos",
                                                 align: "center",
                                                 display: true,
                                                 font: {
