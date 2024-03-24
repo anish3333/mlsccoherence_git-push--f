@@ -2,9 +2,11 @@ import React from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import Footer from '../components/Footer/Footer'
 import { useState, useEffect } from 'react'
-
+import { useSelector } from 'react-redux'
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
+
+import apiKey from '../components/constants'
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -16,6 +18,7 @@ defaults.plugins.title.color = "black";
 ChartJS.defaults.backgroundColor = '#9BD0F5';
 ChartJS.defaults.borderColor = 'rgba(206, 206, 206, 1)';
 ChartJS.defaults.color = '#000';
+
 
 const data = [
     {
@@ -50,8 +53,29 @@ const data = [
     },
 ]
 
-
 function Dashboard() {
+    const Id = useSelector((state) => state.channelID.data);
+    console.log(Id)
+    const [analytics, setAnalytics] = useState(null);
+
+    useEffect(() => {
+        async function fetchChannelStatistics() {
+            try {
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Id}&key=${apiKey}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch channel statistics');
+                }
+                const data = await response.json();
+                console.log(data.items[0].statistics);
+
+                setAnalytics(data.items[0].statistics);
+
+            } catch (error) {
+                console.error('Error fetching channel statistics:', error);
+            }
+        }
+        fetchChannelStatistics();
+    }, []);
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -65,8 +89,23 @@ function Dashboard() {
             <div className='overflow-y-auto w-full overflow-hidden'>
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
                     <div className='h-[60%] w-full flex justify-evenly mt-4'>
-                        <div className='w-[38%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
-                            Analytics
+                        <div className='w-[38%] h-[96%] bg-gray-200 p-8 rounded-2xl flex flex-col'>
+                            <div className='text-center font-bold text-xl'>
+                                Analytics
+                            </div>
+                            <div>
+                                <div className='text-center font-bold text-lg'>
+                                    Total Views : {analytics?.viewCount}
+                                </div>
+                                <div className='text-center font-bold text-lg'>
+                                    Subscriber Count : {analytics?.subscriberCount}
+                                </div>
+                                <div className='text-center font-bold text-lg'>
+                                    Total Videos : {analytics?.videoCount}
+                                </div>
+
+                            </div>
+
                         </div>
                         <div className='w-[58%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
                             <Bar

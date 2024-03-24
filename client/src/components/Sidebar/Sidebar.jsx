@@ -4,8 +4,10 @@ import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import fetchChannelName from '../../hooks/fetchChannelName'
+
 
 const navItems = [
     {
@@ -53,6 +55,7 @@ const navItems = [
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
     const navigate = useNavigate();
 
+
     const openSidebar = () => {
         setIsSidebarOpen(true);
     };
@@ -74,30 +77,39 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 {/* search bar */}
 
                 <div className="relative">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-                    />
-                    <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-gray-400"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
+                    <form action="w-full">
+
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+                        />
+                        <button className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                            onClick={() => {
+                                fetchChannelName({ channelName: '' })
+                            }
+                            }
                         >
-                            <path
-                                fillRule="evenodd"
-                                d="M9 16a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z"
-                                clipRule="evenodd"
-                            />
-                            <path
-                                fillRule="evenodd"
-                                d="M18.707 17.293l-3.182-3.182A6.96 6.96 0 0016 9a7 7 0 10-7 7 6.96 6.96 0 003.111-.747l3.182 3.182a1 1 0 001.414-1.414zM9 15a6 6 0 110-12 6 6 0 010 12z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </button>
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5 text-gray-400"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M9 16a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z"
+                                    clipRule="evenodd"
+                                />
+                                <path
+                                    fillRule="evenodd"
+                                    d="M18.707 17.293l-3.182-3.182A6.96 6.96 0 0016 9a7 7 0 10-7 7 6.96 6.96 0 003.111-.747l3.182 3.182a1 1 0 001.414-1.414zM9 15a6 6 0 110-12 6 6 0 010 12z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
 
                 <div className="mt-6 flex flex-1 flex-col justify-between">
@@ -126,15 +138,18 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
 
                         </div>
 
-                        <div className="text-black h-10 w-20 flex justify-between items-center fixed bottom-6">
-                            <div className='border-black border-[2.5px] p-[0.25rem] rounded-full mx-2'>
-                                <FaUser className='text-xl' />
-                            </div>
-                            <div className='mx-2'>
-                                {user?.data.username || 'User'}
+                        <div className="text-black h-16 w-64 bg-gray-500 flex justify-evenly items-center fixed bottom-0 left-0">
+                            <div className='flex items-center justify-evenly'>
+
+                                <div className='border-black border-[2.5px] p-[0.25rem] rounded-full'>
+                                    <FaUser className='text-xl' />
+                                </div>
+                                <div className='mx-2'>
+                                    {user?.data.username || 'User'}
+                                </div>
                             </div>
                             <div>
-                                <button className='focus:outline-none'
+                                <button className='focus:outline-none w-full bg-gray-600 hover:bg-gray-700 hover:text-gray-300 text-gray-200 py-2 px-4 rounded'
                                     onClick={() => {
                                         ; (
                                             async () => {

@@ -21,6 +21,8 @@ function App() {
     setTimeout(() => {
       setLoading(false);
     }, 4000);
+
+
   }, []);
   return loading ? (
     <Splash />
@@ -36,6 +38,7 @@ function App() {
 
 
         {/* testing */}
+        <Route path="/test" element={<YoutubeAnalyticsDashboard />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/main" element={<Main />} />
         <Route path="/faq" element={<Faq />} />

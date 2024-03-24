@@ -28,9 +28,9 @@ export default function DisplayCard() {
 
 
             {
-                cardItems.map((item, index) => (
+                cardItems.map((item, idx) => (
 
-                    <div className="border-2 w-full flex flex-col items-center rounded-2xl md:flex-row hover:shadow-2xl my-4 bg-gray-300 hover:border-0">
+                    <div key={idx} className="border-2 w-full flex flex-col items-center rounded-2xl md:flex-row hover:shadow-2xl my-4 bg-gray-300 hover:border-0">
                         <div className="h-full w-full md:h-[300px] md:w-[300px] shrink-0">
                             <img
                                 src={item.img}
