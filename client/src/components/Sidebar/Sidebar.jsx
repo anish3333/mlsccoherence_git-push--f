@@ -4,9 +4,11 @@ import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import fetchChannelName from '../../hooks/fetchChannelName'
+import { setChannelID } from '../../store/slices/ChannelID.slices'
+
 
 
 const navItems = [
@@ -54,6 +56,7 @@ const navItems = [
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const openSidebar = () => {
@@ -64,7 +67,30 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
     // console.log(user);
 
 
+    const [formData, setFormData] = useState({
+        search: ''
+    });
+
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(formData);
+        try {
+            const response = await fetchChannelName({ channelName: formData.search });
+            dispatch(setChannelID(response.data.data.channel_id));
+            navigate("/main");
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while submitting the form");
+        }
+    };
+
     return (
+
         <div className={`h-screen w-64 ${isSidebarOpen ? '' : 'hidden'} shrink-0`}>
 
             <aside className="flex h-screen w-64 shrink-0 flex-col bg-gray-400 text-black px-5 py-8 fixed z-10">
@@ -80,6 +106,8 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     <form action="w-full">
 
                         <input
+                            value={formData.value}
+                            onChange={handleChange}
                             type="text"
                             placeholder="Search"
                             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
