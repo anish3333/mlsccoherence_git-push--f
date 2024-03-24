@@ -1,5 +1,6 @@
 // data in vidData, fix charts, chart js
 import Sidebar from "../components/Sidebar/Sidebar";
+import Footer from "../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -39,31 +40,30 @@ const Analytics = () => {
     const [videos, setVideos] = useState([]);
     const [videoAnalytics, setVideoAnalytics] = useState([]);
     const [vidData, setVidData] = useState([]);
+    // {
+    //     "viewCount": "152974",
+    //     "likeCount": "7731",
+    //     "favoriteCount": "0",
+    //     "commentCount": "683"
+    //   }
 
     useEffect(() => {
         async function fetchRecentVideos() {
             try {
-                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${Id}&order=viewCount&maxResults=50&key=${apiKey}`);
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${Id}&order=date&maxResults=6&key=${apiKey}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch recent videos');
                 }
                 const data = await response.json();
-
-                // Sorting the videos based on view count
-                const sortedVideos = data.items.sort((a, b) => b.statistics.viewCount - a.statistics.viewCount);
-
-                // Selecting the top 6 videos
-                const top6Videos = sortedVideos.slice(0, 6);
-
-                setVideos(top6Videos);
-                setVidData(top6Videos.map((item) => {
+                setVideos(data.items);
+                setVidData(data.items.map((item) => {
                     return {
                         videoTitle: item.snippet.title,
                         videoId: item.id.videoId,
-                        videoDesc: item.snippet.description,
+                        videDesc: item.snippet.description,
                     }
-                }));
-                console.log(top6Videos);
+                }))
+                console.log(data.items);
             } catch (error) {
                 console.error('Error fetching recent videos:', error);
             }
@@ -71,7 +71,6 @@ const Analytics = () => {
 
         fetchRecentVideos();
     }, [apiKey, Id]);
-
 
     async function fetchVideoAnalytics(videoId) {
         try {
@@ -86,27 +85,6 @@ const Analytics = () => {
             console.error('Error fetching video analytics:', error);
         }
     }
-
-    const findMaxVideo = (category) => {
-        let maxVideo = null;
-        let maxValue = -1;
-
-        vidData.forEach((video) => {
-            if (video[category] > maxValue) {
-                maxVideo = video;
-                maxValue = video[category];
-            }
-        });
-
-        return maxVideo;
-    };
-
-    // Get the video with the maximum likes
-    const maxLikesVideo = findMaxVideo("likeCount");
-    // Get the video with the maximum views
-    const maxViewsVideo = findMaxVideo("viewCount");
-    // Get the video with the maximum comments
-    const maxCommentsVideo = findMaxVideo("commentCount");
 
     useEffect(() => {
         async function fetchAllVideoAnalytics() {
@@ -175,10 +153,8 @@ const Analytics = () => {
     //     "commentCount": "10119"
     // }
 
-    
-
     return (
-        <div className="flex bg-gray-100">
+        <div className="flex">
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <div className='overflow-y-hidden h-full w-full overflow-hidden'>
                 <div className="bg-gray-300 flex h-16 items-center justify-around">
@@ -193,7 +169,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="PieChart" className={`  p-3 rounded-xl ${pieChecked ? 'bg-gray-200' : 'bg-gray-500'}`} >PieChart</label>
+                        <label htmlFor="PieChart" className={`  p-3 rounded-xl ${pieChecked ? 'bg-gray-700' : 'bg-gray-400'}`} >PieChart</label>
                     </div>
 
                     <div>
@@ -206,7 +182,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label htmlFor="BarGraph" className={`  p-3 rounded-xl ${barChecked ? 'bg-gray-200' : 'bg-gray-500'}`}>BarGraph</label>
+                        <label htmlFor="BarGraph" className={`  p-3 rounded-xl ${barChecked ? 'bg-gray-700' : 'bg-gray-400'}`}>BarGraph</label>
                     </div>
 
                     <div>
@@ -219,7 +195,7 @@ const Analytics = () => {
                             className="hidden"
                         />
                         {/* Label for the checkbox */}
-                        <label className={`  p-3 rounded-xl ${lineChecked ? 'bg-gray-200' : 'bg-gray-500'}`} htmlFor="LineChart">LineChart</label>
+                        <label className={`  p-3 rounded-xl ${lineChecked ? 'bg-gray-700' : 'bg-gray-400'}`} htmlFor="LineChart">LineChart</label>
                     </div>
                 </div>
                 <div className='flex flex-col flex-wrap bg-gray-100 w-full h-screen items-center'>
@@ -242,7 +218,7 @@ const Analytics = () => {
                                             labels: vidData.map((item) => item.videoTitle),
                                             datasets: [
                                                 {
-                                                    label: "Likes",
+                                                    label: "Comment Count",
                                                     data: vidData.map((item) => item.likeCount),
                                                     backgroundColor: [
                                                         "rgba(255, 99, 132, 0.2)",
@@ -276,7 +252,7 @@ const Analytics = () => {
                                             },
                                             plugins: {
                                                 title: {
-                                                    text: "Likes in Past Week",
+                                                    text: "Comment Count for last 6 videos",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -347,7 +323,7 @@ const Analytics = () => {
 
                     {
                         lineChecked ?
-                            (<div className='h-[36%] w-[98%] bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
+                            (<div className='h-[36%] w-[98%] relative bg-gray-200 p-8 my-2 mt-1 rounded-2xl'>
 
                                 <Line
                                     data={{
@@ -390,24 +366,7 @@ const Analytics = () => {
                             ) : ''
                     }
 
-
                 </div>
-                <div className="overflow-y-hidden w-[70%] mx-auto bg-gray-200 h-full p-28 text-black leading-normal">
-                    <h2 className="text-black leading-normal text-xl">Videos with Maximum Performance</h2>
-                    <div className="max-video">
-                        <h3 className="leading-normal text-xl">Most Liked Video:</h3>
-                        {maxLikesVideo && <p>{maxLikesVideo.videoTitle}</p>}
-                    </div>
-                    <div className="max-video">
-                        <h3 className="text-xl">Most Viewed Video:</h3>
-                        {maxViewsVideo && <p>{maxViewsVideo.videoTitle}</p>}
-                    </div>
-                    <div className="max-video">
-                        <h3 className="leading-normal text-xl">Most Commented Video:</h3>
-                        {maxCommentsVideo && <p className="leading-10">{maxCommentsVideo.videoTitle}</p>}
-                    </div>
-                </div>
-
 
                 {/* <Footer /> */}
             </div>
