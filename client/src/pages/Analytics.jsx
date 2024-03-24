@@ -276,13 +276,13 @@ const Analytics = () => {
                                 (<div className='w-[58%] h-[96%] bg-gray-200 p-8 rounded-2xl'>
                                     <Bar
                                         data={{
-                                            labels: vidData.map((item) => item.title),
+                                            labels: vidData.map((item) => item.videoTitle.length > 15 ? item.videoTitle.substring(0, 15) + '...' : item.videoTitle),
                                             datasets: [
                                                 {
-                                                    label: "Like Count",
-                                                    data: vidData.map((item) => item.commentCount),
-                                                    backgroundColor: "rgba(108, 108, 255, 1)",
-                                                    borderColor: "rgba(0, 0, 190, 1)",
+                                                    label: "Total Views",
+                                                    data: vidData.map((item) => item.viewCount),
+                                                    backgroundColor: "rgba(25, 255, 25, 1)",
+                                                    borderColor: "rgba(0, 182, 0, 1)",
                                                     borderWidth: 1,
                                                     borderRadius: 10,
                                                     color: "black",
@@ -301,7 +301,7 @@ const Analytics = () => {
                                             },
                                             plugins: {
                                                 title: {
-                                                    text: "Like Count for last 6 videos",
+                                                    text: "Total Views",
                                                     display: true,
                                                     align: "center",
                                                     font: {
@@ -327,7 +327,7 @@ const Analytics = () => {
 
                                 <Line
                                     data={{
-                                        labels: vidData.map((item) => item.title),
+                                        labels: vidData.map((item) => item.videoTitle.length > 15 ? item.videoTitle.substring(0, 15) + '...' : item.videoTitle),
                                         datasets: [
                                             {
                                                 label: "Subscribers",
